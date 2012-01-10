@@ -102,29 +102,29 @@
 \subsection{Tabular Directory Model}
 
     % current directory model vs evolved directory model
-    Typically, current file system directory is a plain (key/value) table with three columns: \emph{name}, \emph{metadata}(including extended attributes, abbr. xattr), and \emph{data}. Naturally, for a photo with several sized images, each image is saved in a standalone file, shown by Figure \ref{directory_model}(a). Obviously, we have \emph{N} copies of file metadata. Alternatively, we can group these \emph{N} images together by xattr and self-packing to eliminate redundant metadata and boost up metadata accessing. However, it is non-trivial to store several image files with one file name in plain directory model. Firstly, it is impossible to save large data content in xattr. Linux VFS \texttt{xattr} only supports setting and getting at most 64KB buffer. Even worse, local file system, e.g. Ext3, sets up a smaller buffer limit at 4KB. Secondly, user has to pack multiple image files into one file's data content and record offset and length of each image in xattr, shown in Figure \ref{directory_model}(b). Although it is possible to save \emph{N} image files under one name, this approach is inconvenient for users. Other applications have to build their own packing and unpacking framework.
+    Generally, directory of current file system is a plain (key/value) table with three columns: \emph{name}, \emph{metadata} (including extended attributes, abbr. xattr), and \emph{data}. Typically, for several sized images from one photo, each image is saved in a standalone file, shown by Figure \ref{directory_model}(a). Then, we have \emph{N} copies of file metadata. Alternatively, we can use xattr to pack these \emph{N} images together to eliminate redundant metadata and boost up metadata accessing. However, it is non-trivial to store several files with one name in plain directory model. Firstly, it's impossible to store large data content in xattr. Linux VFS \texttt{xattr} only supports setting and getting at most 64KB buffer. Even worse, local file system, e.g. Ext3, sets up a smaller buffer limit at 4KB. Secondly, user has to pack multiple image files into data content and record offset and length of each image in xattr, shown in Figure \ref{directory_model}(b). Although this approach is possible to save \emph{N} image files under one name, it is inconvenient for users. Other applications have to build their own packing and unpacking framework.
 
 \begin{figure}
   % Requires \usepackage{graphicx}
   \includegraphics[width=.5\textwidth]{directory_model.eps}
-  \caption{Directory Model for N-Form Problem. \textit{\small Imagea-s and imagea-m are the small and medium forms of imagea. Plain model is either (a) metadata costing or (b) difficult to use. Column oriented tabular model resolves both these difficulties.}}\label{directory_model}
+  \caption{Directory Model for N-Form Problem. \textit{\small Imagea-s and imagea-m are the small and medium forms of imagea. Plain directory model is either (a) metadata costing or (b) difficult to use. Column oriented tabular model resolves both these difficulties.}}\label{directory_model}
 \end{figure}
 
     To address the \textit{N-Form} issue, we propose a column-oriented tabular directory model (abbr. CODIR). Shown by Figure \ref{directory_model}(c), each file has two basic columns: \emph{name}, and \emph{metadata}; and multiple \emph{data columns}: different file forms, xattrs, or tags. Thus, several file forms derived from one file can be stored in different columns under one file name. For example, all file forms origin from \textit{imagea} are saved with name \textit{imagea}. Each form (e.g. \textit{imagea-s}, the small sized \emph{imagea}) is saved in one column (e.g. \textit{Col 1}). By utilizing this tabular directory model, users can not only save space, but also store and retrieve column data much more easier. We have proposed an API to access file columns in Section \ref{interface}.
 
-    \subsubsection{Sparse Table}
+    \subsubsection{Handle Sparse Table}
 
-    In CODIR's table, there might be unlimited columns. If columns' metadata are saved in dentries, then dentries are variably sized. Directory operations such as \texttt{seekdir} would be difficult to implement. Thus, we make dentries have a fixed size. Each dentry contains fixed number of \emph{direct} columns and unlimited \emph{indirect} columns. The frequently accessed data should be put in the direct columns, while the infrequently accessed ones should be put in the indirect columns.
+    In CODIR's table, there might be many columns. If columns' metadata are saved in dentries, then dentries are variably sized. Directory operations such as \texttt{seekdir} would be difficult to implement. Thus, we make dentry has a fixed size. Each dentry contains fixed number of \emph{direct} columns and many \emph{indirect} columns. Frequently accessed data should be put in direct columns, while infrequently accessed ones should be put in indirect columns.
 
-    As directory contains lots of columns, it might be sparse. Some dentries do not have valid values for some columns. Obviously, these blank cells do not need to be saved. For each column, valid data are sent to storage server and aggregated in a column file, shown by Figure \ref{storage_engine_model}. The data written offsets must be kept in dentries (as metadata) for read and write in the future. Data offsets of direct columns are stored in dentries, while data offsets of indirect columns are stored in an \emph{indirect file}. Thus, accessing data of direct columns are faster than that of indirect columns. Besides, if the table is sparse, it is space consumptive for indirect columns to keep these offsets in a fixed sized array with holes. Thus, the indirect file is append-only with a tail index record. For each update, the update offset and an index record (indicates column ranges and internal offsets) are appending to tail of the file. On reading, the index record is read in firstly to determine which file position should be read next.
+    Since directory contains lots of columns, it might be sparse. Some dentries do not have valid values for some columns. Obviously, these blank cells do not need to be saved. For each column, valid data are sent to storage server and aggregated in column files, shown by Figure \ref{storage_engine_model}. And data written offsets must be kept in dentries (as metadata) for future read and write. Data offsets of direct columns are stored in dentries, while data offsets of indirect columns are stored in an \emph{indirect file}. Thus, accessing data of direct columns are faster than that of indirect columns. Besides, if the table is sparse, it is space consumptive for indirect columns to keep these offsets in a fixed sized array with holes. Thus, the indirect file is append-only with a tail index record. For each update, the updated offset and an index record (indicates column ranges and internal offsets) are appending to tail of the file. On reading, the index record is read in firstly to determine which file position should be read next.
 
-    Although the tabular directory supports sparse table, we argue that sparse tables decrease directory performance and waste more space. To eliminate sparse tables in practice, users should only group files with similar properties in one directory. For example, do not mix user photos and documents together in a directory. Fortunately, this simple rule always keeps because of our habit to classify things before storing.
+    Although CODIR supports sparse table, we argue that sparse tables decrease directory performance and waste more space. To reduces sparse tables in practice, users should only group files with similar properties in one directory. For example, store user photos and documents in separated directories. Fortunately, this simple rule always keeps because we classify things before storing.
 
     %Each directory has a schema to describe what has been stored in each column. The schema can be altered dynamically, while the column data stays the same.
 
     \subsubsection{Advantages of CODIR}
 
-    The tabular directory model can save DFS's metadata for \emph{N-Form} problem. Other than metadata saving, this model has some other advantages. Firstly, it is more efficient to store larger data than extended attributes. In many implementations, \texttt{xattr} attaches to file metadata, and is not very efficient at storing large data content. While, CODIR permits to store several variable length of data in it. And these data are not required to store with metadata. Secondly, it is more efficient to do data compression on columns. Shown by Figure \ref{storage_engine_model}, we aggregate one or several columns' content (e.g. \emph{Metadata}) to one storage file. Thus, for each directory, we have already grouped similar data together. It is efficient for compressor to get a better zip ratio. For example, we had compressed the \emph{Metadata} file for about \emph{25 times} smaller by using LZO\cite{lzo} in PFS. Thirdly, it is more efficient to do bulk load on specific columns. For example, file content of the same column are stored in the same storage file, thus, it is suit for bulk loading. This is valuable for Web applications that needs bulk file loads in the cache filling stage. For example, in photo galleries, loading small sized images (aka thumbnails) to cache are very fast with CODIR, because these are all sequential I/Os.
+    CODIR deduplicates DFS's metadata for \emph{N-Form} problem. Other than metadata saving, it has some other advantages. Firstly, it is more efficient to store large data than xattr. In many file systems, \texttt{xattr} attaches to file metadata, and is not effective at storing large data. While, CODIR permits to store several variable length of data in it. And these data are not required to store with metadata. Secondly, it is more efficient to do data compression on columns. Shown by Figure \ref{storage_engine_model}, we aggregate one or several columns' content (e.g. \emph{Metadata}) to one storage file. Thus, in each directory, we have already grouped similar data together. It is efficient for compressor to get a better zip ratio. For example, we had compressed the \emph{Metadata} file for about \emph{25 times} smaller by using LZO\cite{lzo} in PFS. Thirdly, it is more efficient to do bulk load on specific columns. For example, file content of the same column are stored in the same storage file, thus, it is suit for bulk loading. This is valuable for Web applications that needs bulk file loads in the cache filling stage. For example, in photo galleries, loading small sized images (aka thumbnails) to cache are very fast with CODIR, because these are all sequential I/Os.
 
 \subsection{Structured Storage}
 
@@ -135,40 +135,39 @@
 \end{figure}
 
     % eliminate 1-N mapping: directory-based data aggregation; column-oriented model directed columnar store;
-    Current distributed file systems mostly map their files to files of local file system on storage nodes. Thus, even you resolve the \emph{N-Form} problem, you still have the \emph{1-N Mapping} problem that increases small file access latency. Shown by Figure \ref{storage_engine_model}, to reduce this storage file metadata lookup latency, we propose a directory-based file aggregation approach. This aggregation reduces metadata, and is not only saving disk space but also saving memory (no need to cache lots of dentires of local file system). Small files in one directory are logically grouped in one big storage file to eliminate redundant metadata. Each data access is actually a read or write in this big file. Thus, ideally, for each directory, we only have to lookup and open one storage file. By caching this file's metadata, data I/O of small files does not need to do metadata lookups in local file system thereafter. Meanwhile, a file system directory is naturally a locality set. Files in one directory might be accessed contiguously. Combining files of the same directory together not only doesn't ruin, but also improve the spatial locality.
+    Current distributed file systems mostly map their files to files of local file system on storage nodes. Thus, even you resolve the \emph{N-Form} problem, you still have the \emph{1-N Mapping} problem that increases small file access latency. Shown by Figure \ref{storage_engine_model}, to reduce storage file metadata lookup latency, we propose a directory-based file aggregation approach. This aggregation reduces metadata of local file system, and is not only saving disk space but also saving memory (no need to cache lots of dentires of local file system). Small files in one directory are logically grouped in a big storage file to eliminate redundant metadata. Each data access is actually a read or write in this big file. Thus, ideally, for each directory, we only have to lookup and open one storage file. By caching this file's metadata, data I/O of small files does not need to do metadata lookups in local file system thereafter. Meanwhile, a file system directory is naturally a locality set. Files in one directory might be accessed contiguously. Aggregating files of the same directory not only doesn't ruin, but also improve the spatial locality.
 
-    At the same time, in CODIR, data contents are aggregated by column by default. The rationale of splitting one file's columns into several storage files is to reduce unnecessary data loading in column fetching (and prefetching). For example, in a photo gallery, when you visit a list of previews, it is unnecessary and time consuming to read in every photo's original file. However, co-accessed columns could be grouped and stored together. For example, in Figure \ref{storage_engine_model}, we group file's metadata and data content together. Each file lookup, that read-in the metadata, would prefetch the data content to cache either. Subsequent data access would hit in the cache.
+    At the same time, in CODIR, data contents are aggregated by column by default. The rationale of splitting file columns into several storage files is to reduce unnecessary data loading in column fetching (and prefetching). For example, in a photo gallery, when you visit a photo list (previews), it is unnecessary and time consuming to read in every photo's original file. However, co-accessed columns could be grouped and stored together. For example, in Figure \ref{storage_engine_model}, we group file's metadata and original data together. Each file lookup, that read-in the metadata, would prefetch the data content to cache either. Subsequent data access would hit in the cache.
 
     \subsubsection{Aggregated Storage Files}
 
-    We use log structure storage format for the aggregated file data. For small files, it is more space efficient than block based storage format because of no internal fragments\cite{lfs}. New arriving data is appended to tail of the file. Removing files are only metadata operations and do not need to update data file. Every small file write must contain the full file content. Thus, file rewrite has to be transformed to read-modify-write (RMW).
+    We use log structure storage format for the aggregated file data. For small files, it is more space efficient than block based storage format because of no internal fragments\cite{lfs}. New arriving data is appended to tail of the file. Removing files are only metadata operations and do not need to update the data file. Every small file write must contain the full file content. Thus, file rewrite has to be transformed to read-modify-write (RMW).
 
-    After lots of file deletions or modifications, the aggregated data file might be filled with holes. These holes must be detected and garbage collected to save storage space. For each directory, metadata that needed in garbage collecting (GC) co-locates with the data. Thus, the GC process runs incrementally against directories on each storage node to not interfere with storage process.
+    After lots of file deletions or modifications, the aggregated data file might be filled with holes. To save storage space, these holes have to be detected and garbage collected (GC). For each directory, metadata that needed in GC has already co-located with the data. Thus, the GC process could run incrementally against directories on each storage node to not interfere with storage process.
 
-    The RMW issue of file rewritten might be a performance bottleneck. However, in Web applications, there are fewer file rewritten than file creations and reads. Further more, \texttt{a)} read small file (in stage R) means less time to stall, and \texttt{b)} lots of rewritten are actually issued after file reads (which matches the order of stages R and M). Thus, we argue that RMW issue would has more impacts on larger files than smaller ones and it is worth sacrificing rewrite performance to optimize file creation and read.
+    The RMW issue of file rewritten might be a performance bottleneck. However, in Web applications, there are fewer file rewritten than file creations and reads. Further more, \texttt{a)} read small file (in stage R) means less time to stall, and \texttt{b)} lots of rewritten are actually issued after file reads (which matches the order of stages R and M). Thus, we argue that RMW issue has more impacts on larger files than smaller ones and it is worth sacrificing rewrite performance to optimize file creation and read.
 
     \subsubsection{Structured Storage Files}
 
-    Dentries are stored in an aggregated storage file: \emph{Metadata}. Number of dentries grouped as a \emph{slice}, which is the basic metadata read and write unit. Slice is different from directory partition in GIGA+\cite{giga} and SkyFS\cite{skyfs}. Slice uses hash table indexing, while directory partition uses out-of-core indexing. It reduces access latency for small files by eliminating out-of-core indexing.
+    Dentries are stored in an aggregated storage file: \emph{Metadata}. Number of dentries are grouped as a \emph{slice}, which is the basic metadata read and write unit. Slice is different from directory partition in GIGA+\cite{giga} and SkyFS\cite{skyfs}. Directory partition uses out-of-core indexing, while slice use hash table indexing. It reduces access latency for small files by eliminating out-of-core indexing.
 
-    It is slow to do slice lookups in the log structure \emph{Metadata} file. Thus, an index file is built, \emph{Boost File}, for the metadata file to speed up lookups. The index keeps a record $<$slice, offset$>$ for each active slice. The \emph{Boost File} is a supplement of the \emph{Metadata} file. It is guaranteed to be updated on every slice write. Even if corrupted, it can be regenerated by scanning the \emph{Metadata} file. Slice in \emph{Metadata} file has a header, which contains magic numbers and special inequations. These can be used as border markers of slice in scaning.
+    It is slow to do slice lookups in the log structure \emph{Metadata} file. Thus, an index file is built, \emph{Boost File}, for the metadata file to speed up lookups. The index keeps a record $<$slice, offset$>$ for each active slice. \emph{Boost File} is a supplement of \emph{Metadata} file. It is guaranteed to be updated on every slice write. Even if corrupted, it can be regenerated by scanning \emph{Metadata} file. Slice in \emph{Metadata} file has a header, which contains magic numbers and special inequations (e.g. length restraint). These can be used as border markers of slice in scaning.
 
 \begin{figure}
   % Requires \usepackage{graphicx}
   \includegraphics[width=.5\textwidth]{index_mapping.eps}
-  \caption{Sorted File Format. \textit{\small Columns of directory X and Y are directed to Sorted File $\alpha$. Each database contains one base file and several secondary indexes.}}\label{index_mapping}
+  \caption{Sorted File Format. \textit{\small Some columns of directory X and Y are directed to Sorted File $\alpha$. Each Sorted File contains one base file and several secondary indexes.}}\label{index_mapping}
 \end{figure}
 
-    Semantic searches, e.g. ``\textit{Top-K query: find the K hot jpeg files}'', are widely used in many applications\cite{spyglass,smartstore}. In CODIR, columns could be used to store application specific tags or xattrs. These tags and xattrs are used to serve semantic searches. Researches\cite{spyglass,smartstore} have found that using an external database ruins the spatial query locality, and proposed many semantic search approaches on large scale file systems. However, most of these approaches depend on offline file scanning, and are not capable to handle mutable file systems (for Web2.0 applications). To support online indexing, we propose to \textbf{1)} use internal \emph{sorted} file instead of external database, \textbf{2)} use Star schema to maintain relationships among columns, and \textbf{3)} only manage user-defined subset of directory columns to decrease file subset size that we handle. At the same time, sorted file is tightly coupled with file system to achieve lower latency. For example, shown by Figure \ref{index_mapping}, columns \emph{A, B} from directory \emph{X}, and columns \emph{C, D, E} from directory \emph{Y} are kept in one sorted file \emph{$\alpha$}. Each sorted file contains a base file to save basic mappings from file name to unique file id(File$|$ID), and several secondary indexes for each column(e.g. A$|$ID). In this way, it is easy to dynamically add new column or delete old column. In all, this approach not only maintains spatial locality, but also provides more flexibility. The sorted files could be key/value stores such as BerkeleyDB\cite{berkeleydb}. Thus, in Figure \ref{storage_engine_model}, query ``\textit{find all the jpeg files}'' can be executed by searching the \emph{sorted} file and locating file \emph{imageb} directly, rather than scanning the whole directory to find the file.
-    % specify the BDB configurations
+    Semantic searches, e.g. ``\textit{Top-K query: find the K hot jpeg files}'', are widely used in many applications\cite{spyglass,smartstore}. In CODIR, columns could be used to store application specific tags or xattrs. These tags and xattrs are used to serve semantic searches. Researches\cite{spyglass,smartstore} have found that using an external database ruins the spatial query locality, and proposed many semantic search approaches on large scale file systems. However, most of these approaches depend on offline file scanning, and are not capable to handle heavy mutable file systems (for Web2.0 applications). To support online indexing, we propose to \textbf{1)} use internal \emph{sorted} file instead of external database, \textbf{2)} use Star schema to maintain relationships among columns, and \textbf{3)} only manage user-defined subset of directory columns to decrease file subset size that we handle. At the same time, sorted file is tightly coupled with file system to achieve lower latency. For example, shown by Figure \ref{index_mapping}, columns \emph{A, B} from directory \emph{X}, and columns \emph{C, D, E} from directory \emph{Y} are kept in one sorted file \emph{$\alpha$}. Each sorted file contains a base file to save basic mappings from file name to unique file id (File$|$ID), and several secondary indexes for each column (e.g. A$|$ID). In this way, it is elastic to add new columns or delete old columns. Sorted files could be implemented by key/value stores such as BerkeleyDB\cite{berkeleydb}. In all, sorted file not only maintains spatial locality, but also provides more flexibility. Thus, in Figure \ref{storage_engine_model}, query ``\textit{find all the jpeg files}'' can be executed by searching the \emph{sorted} file and locating file \emph{imageb} directly, rather than scanning the whole directory to find the file.
 
 \subsection{Tabular Query Interface}
 \label{interface}
 
     % exploit the existing xattr interface: getxattr, setxattr, listxattr, ...
-    Firstly, as we have extended the directory model to store multiple columns, we need an interface to get/set table cells. Secondly, in large scale file system, to find a file subset, searching is more meaningful than traversing. As a result, we provide a user level tabular maintain and search interface, and also wrapped it to fit the existing \texttt{xattr} interface\footnote{Note that, it is impossible to do large data read/write with this wrapper because of the 64KB buffer limit in Linux VFS.}: \texttt{getxattr} and \texttt{setxattr}.
+    Firstly, as we have extended the directory model to store multiple columns, we need an interface to manipulate table cells. Secondly, in large file systems, searching is more efficient than directory traversing to find a file subset. As a result, we provide a user level table manipulation interface, and wrap it to fit the \texttt{xattr} interface: \texttt{getxattr} and \texttt{setxattr}.
 
-    \begin{table}
+    \begin{table}[t]
     \centering
     \begin{tabular}{c|l}
       \hline
@@ -195,7 +194,7 @@
       \hline
       \hline
       getxattr & Wrapper Examples\\
-      & \texttt{\scriptsize (filepath, EMBEDDED\_CMD\_STRING, buf,len)}\\
+      & \texttt{\scriptsize (filepath, \textbf{EMBEDDED\_CMD\_STRING}, buf,len)}\\
       \hline
       \texttt{\scriptsize opentab} & \texttt{\scriptsize "pfs.table.opentab.DIR"}\\
       \texttt{\scriptsize bulkload} & \texttt{\scriptsize "pfs.table.bulkload.TH.colname"}\\
@@ -203,54 +202,53 @@
       \hline
       \hline
       setxattr & Wrapper Examples\\
-      & \texttt{\scriptsize (filepath, EMBEDDED\_CMD\_STRING, buf,len)}\\
+      & \texttt{\scriptsize (filepath, \textbf{EMBEDDED\_CMD\_STRING}, buf,len)}\\
       \hline
       \texttt{\scriptsize writetab} & \texttt{\scriptsize "pfs.table.writetab.TH.file.colname"}\\
       \texttt{\scriptsize set} & \texttt{\scriptsize "pfs.sorted.set.S.file.k1=v1,k2=v2"}\\
       \hline
     \end{tabular}
-    \caption{User Level Interface for File and Directory}
+    \caption{User Level Interface and xattr Wrapper}
     \label{tabular_interface_table}
     \end{table}
 
-    As shown by Table \ref{tabular_interface_table}, we defined three API groups for CODIR. The \textbf{table} group is for applications. When opening the directory table, user can read/write specific file column and do bulk load on columns.
-    The \textbf{raw} group is for library developers. They can read/write specific file column by column ID instead of name directly. The \textbf{sorted} group is for tag operations. A list of key/value pairs can be attached with each file. KV pairs from specific columns of directories are grouped in one sorted file. These pairs are automatically indexed. By using sorted file, queries and joins on file tags are more quickly than brute-force scanning the whole directory tree.
+    As shown by Table \ref{tabular_interface_table}, we defined three API groups for CODIR. The \textbf{table} group is for applications. When opening the directory table, user can read, write and do bulk load on specific column. The \textbf{raw} group is for library developers. They can read/write specific file column by column ID directly instead of name. The \textbf{sorted} group is for tag operations. A list of key/value pairs can be attached with each file. KV pairs from specific columns of directories are grouped in one sorted file. These pairs are automatically indexed. Thus, by utilizing sorted files, queries and joins on file tags are more fast than brute-force scanning the whole directory tree.
 
-    The \texttt{xattr} wrappers encode tabular operations in strings. For example, string ``pfs.sorted.set.S.file.k1=v1, k2=v2'' represents a tuple ($<$file, $k1=v1;k2=v2$$>$) addition on sorted file \texttt{S}. String ``pfs.sorted.search.S.R: $k1<10\&k2>20$'' represents a range (\texttt{R:}) search on sorted file \texttt{S} that satisfies $k1<10\&k2>20$. The search operation returns an iterator, which allows you iterate the result set.
+    The \texttt{xattr} wrappers encode tabular operations in strings. For example, string ``pfs.sorted.set.S.file.k1=v1, k2=v2'' represents adding tuple $<$file, k1=v1;k2=v2$>$ to sorted file \texttt{S}. String ``pfs.sorted.search.S.R: $k1<10\&k2>20$'' represents a range (\texttt{R:}) search on sorted file \texttt{S} that satisfies $k1<10\&k2>20$. Search results are returned as \emph{iterator} to allow users to iterate on.
 
 \section{Implementation Details}
 
-\begin{figure}
+\begin{figure}[t]
   % Requires \usepackage{graphicx}
   \includegraphics[width=.5\textwidth]{hvfs_architecture3.eps}\\
   \caption{Architecture of PFS}\label{hvfs_architecture}
 \end{figure}
 
-    We have implemented the tabular directory model, storage structures, and interface in a prototype distributed file system PFS for Web applications that need to access large scale small files. Large files are handled by other DFSs. Shown by Figure \ref{hvfs_architecture}, PFS contains a FUSE\cite{fuse} client, a dedicated metadata and storage cluster to handle small files, and relies on Ext3, SkyFS (or Ceph, PVFS2) to handle large files. However, CODIR might be implemented in other DFSs to improve their small file performance.
+    We have implemented CODIR, structured storage, and tabular interface in a prototype distributed file system PFS for Web applications that need to access large scale small files. Large files are handled by other DFSs. Shown by Figure \ref{hvfs_architecture}, PFS contains a FUSE\cite{fuse} client, a dedicated metadata and storage cluster to handle small files, and Ext3, SkyFS (or Ceph, PVFS2) store to handle large files. However, CODIR could be implemented in other DFSs to improve their small file performance.
 
     The metadata cluster is a collaborative cache layer over storage servers to provide low latency metadata service. Metadata modifications are flushed back to disk asynchronously. The metadata service latency dominates the whole file access latency for extremely small files. As a result, caching metadata in memory decreases the total latency greatly.
 
-    The storage cluster is a shared storage pool. Metadata and data of small files are aggregated by directory and scattered to all the servers. Thus, for each directory, there are several sequential data write flows to exhaust large scale concurrent file creations.
+    The storage cluster is a shared storage pool. Metadata and data of small files are scattered to all the servers and aggregated by directory. Thus, for each directory, sequential data write flows are set up on every server to exhaust large scale concurrent file creations.
 
 \subsection{Distinguish Small Files}
     % static or dynamic
-    Small files are typically less than 1MB\cite{gfs}. In many photo galleries, we found that the average file size is at 32KB. Thus, for higher degree of confidence, we make 2MB as the transition point from small file to large file. But, at file \texttt{open} time, there is no hint on file length. There are two approaches to distinguish small files. The first one is a \emph{static} approach. The parent directory is marked as \emph{static-small} and all file creations in it automatically inherit the property. The second one is a \emph{dynamic} approach. The parent directory is marked as \emph{dynamic-small}. Static-small doesn't allow a small file to transform to a large one automatically, while dynamic-small allows that.
+    Typically, small files are less than 1MB\cite{gfs}. In many photo galleries, we found that the average file size is 32KB\cite{trf}. Thus, we make 2MB as the transition point from small file to large file for higher degree of confidence. At file \texttt{open} time, there is no hint on file length. There are two approaches to distinguish small files. The first one is a \emph{static} approach. Parent directory is marked as \emph{static-small} and all file creations in it automatically inherit the property. The second one is a \emph{dynamic} approach. Parent directory is marked as \emph{dynamic-small}. Static-small doesn't allow automatic transformation from small file to large file, while dynamic-small allows that.
 
-    At \texttt{open} time, we use parent directory's property to guide following I/O operations. When it is static-small, the followings are all small file operations. When it is none, the following are all large file operations. When it is dynamic-small, the PFS client probes on each file write and determine if the file is larger than 2MB to be able to change from small file to large file or vice verse.
+    At \texttt{open} time, we use parent directory's property to guide subsequent I/O operations. When it is static-small, the followings are all small file operations. When it is none, the following are all large file operations. When it is dynamic-small, PFS client probes on each file write and determine whether the file is large enough to be able to change from small file to large file or vice verse.
 
 \subsection{Elastic Metadata Service}
 
-    Metadata service is the bottleneck in many distributed file systems\cite{lustre,gfs}, especially for small files. Even in scalable file systems\cite{ceph,giga,pvfs}, metadata performance has been slowed down by storage structures(e.g. out-of-core indexing). Thus, CODIR and file aggregation, that decrease and aggregate metadata, could increase metadata performance either. Meanwhile, for large scale small file creations, metadata service has to be able to scale out to large number of machines. But, in practice, it is difficult to estimate how many machines are enough for user requests before starting up. Thus, it requires \emph{elastic} metadata service which supports adding or removing machines online.
+    Metadata service is the bottleneck in many distributed file systems\cite{lustre,gfs}. Even in scalable file systems\cite{ceph,giga,pvfs}, metadata performance has been slowed down by storage structures (e.g. out-of-core indexing), especially for small files. Thus, CODIR and file aggregation, that decrease and aggregate metadata, could increase metadata performance either. Meanwhile, for large scale small file creations, metadata service has to be able to scale out to large number of machines. But, in practice, it is difficult to estimate how many machines are enough for user requests before starting up. Thus, it requires \emph{elastic} metadata service which supports adding or removing machines online.
 
     % scale out
-    To scale out to a large cluster and keep low latency, the metadata service of PFS uses extendible hashing\cite{giga} to manage slices of directory tables. With lots of file creations, slice splits to store more files. The new slice might be managed on the same metadata server (aka. local split) or other remote servers (aka. remote split). If the new slice is placed on remote servers, more server processing capability might be used. However, there always exists data transfer overhead in remote splits. Thus, in PFS, we make slices firstly split to remote servers to exploit more machines, and secondly split at the same server to eliminate data transfer overhead(named Two-Stage split).
+    To scale out to a large cluster and keep low latency, the metadata service of PFS uses extendible hashing\cite{giga} to manage slices of directory tables. With lots of file creations, slices split to store more files. The new slices might be managed on the same metadata server (aka local split) or other remote servers (aka remote split). If new slices are placed on remote servers, more server processing capability might be used. However, there always exists data transfer overhead in remote splits. Thus, in PFS, we make slices firstly split to remote servers to exploit more machines (parallelism), and secondly split at the same server to eliminate data transfer overhead (named Two-Stage split).
 
     % elastic
-    To scale elastically, PFS uses consistent hashing to distributed table slices to servers. Thus, when adding or removing machines, slices that need to be transferred to remote machines are least\cite{ch}. At the same time, because of metadata service of PFS is a caching service, slices that need to be transferred could be simply dropped at original server and reload on demand by the new server. This approach mitigates data transfers on machine changes, and results in lower service interruption.
+    To scale elastically, PFS uses consistent hashing to distributed table slices to servers. Thus, when adding or removing machines, slices that need to be transferred to remote machines are least\cite{ch}. At the same time, because metadata service of PFS is a caching service, slices that need to be transferred could be simply dropped by original server and reload on demand by new server. This approach mitigates data transfer overhead on machine changes, and results in lower service interruption.
 
 \subsection{Parallel Small File I/O}
 
-    In practice, applications are expected to use one directory to store one type of files as far as possible. Thus, PFS storage cluster aggregates small files based on directory. I/O operations for small files are first scattered to a list of servers, and then aggregated by directory. PFS exploits both spatial and temporal locality to boost up small file I/O performance.
+    PFS storage cluster use structured storage to aggregate small files based on directory. I/O operations for small files are first scattered to a list of servers, and then aggregated by directory. PFS exploits spatial locality to speed up small file I/O performance.
 
 \begin{figure}[t]
   % Requires \usepackage{graphicx}
@@ -258,9 +256,9 @@
   \caption{I/O Write Flow: Scatter and Aggregation}\label{io_write_flow}
 \end{figure}
 
-    Each server opens one aggregated file for a directory. Instead of in-place modification, file creations and writes are appended to the file. If there are lots of file creations, the creation flow is directed to the file to exploit sequential I/O bandwidth. The temporal continuous data flows (split by column) are transformed to spatial continuous data streams. Further more, because of file creations in one directory are scattered to several servers, actually PFS sets up several sequential I/O flows to exhaust lots of concurrent file creations, shown by Figure \ref{io_write_flow}. Note that, every file written must be an integrated writes.
+    Each server opens one aggregated file for a directory. Instead of in-place modification, file creations and writes are appended to the file. If there are lots of file creations, the creation flow is directed to the file to exploit sequential I/O bandwidth. Temporal continuous data flows (split by column) are transformed to spatial continuous data streams. Further more, because file creations in one directory are scattered to several servers, actually PFS sets up many sequential I/O flows to exhaust concurrent file creations, shown by Figure \ref{io_write_flow}.
 
-    At the same time, columns are stored in separated storage files by default. Thus, each file has already aggregated contents that has similar property. For example, in Figure \ref{storage_engine_model}, storage file for column `Medium' contains all the files of medium size. For application requests that need to scan all medium images (violence detection), it is efficient to do sequential reads on the storage file. As columnar store in database, this exploits the vertical spatial locality in directory table.
+    At the same time, columns are stored in separated storage files by default. Thus, each file has already aggregated data content with similar property. For example, in Figure \ref{storage_engine_model}, storage file of column \emph{Medium} contains all files of medium size. For application requests that need to scan all medium images (e.g. violence detection), it is efficient to do sequential reads on the storage file. As columnar store in database, this exploits the vertical spatial locality in directory table.
 
 \section{Experimental Evaluation}
 
@@ -268,11 +266,11 @@
 
 \subsection{Experimental Setup}
 
-    We deploy PFS on two commodity clusters. For cluster A (50 nodes), the hardware configuration of a blade has one quad-core 1.6GHz Intel Xeon processors, 4GB memory, GigE NIC, and connected by 10GigE switches. For cluster B (80 nodes), each blade has three quad-core 1.6GHz Intel Xeon processors, 23GB memory, GigE NIC and switches. Cluster A has a better network, while cluster B has more large memory machines. All nodes were running the Linux 2.6.16-60 kernel(Suse release) and PFS stores file system images on one 7200rpm SATA disk.
+    We deploy PFS on two commodity clusters. For cluster A (50 nodes), the hardware configuration of a blade has one quad-core 1.6GHz Intel Xeon processors, 4GB memory, GigE NIC, and connected by 10GigE switches. For cluster B (80 nodes), each blade has three quad-core 1.6GHz Intel Xeon processors, 23GB memory, GigE NIC and switches. Cluster A has a better network, while cluster B has more large memory machines. All nodes were running Linux 2.6.16-60 kernel (Suse release) and PFS stores file system image on a 7200rpm SATA disk.
 
 \subsection{NForm Promblem}
 
-\begin{figure}
+\begin{figure}[t]
   % Requires \usepackage{graphicx}
   \includegraphics[width=.5\textwidth]{eps/spacesavingx.eps}\\
   \caption{Space consumption of saving 1.5 million data contents in PFS, Ext3, OrangeFS. \textit{\small By adopting CODIR, the metadata space consumption is only 1/20 comparing with PFS without CODIR. Meanwhile, CODIR uses less data and metadata space comparing with Ext3 and OrangeFS, and has the lowest latency for this test.}}
@@ -281,7 +279,7 @@
 
     To find out whether CODIR can save metadata space for \emph{NForm} problem, we run a micro benchmark to write 1,500,000 data contents (total data size is 7.9GB) on one blade of cluster A. For PFS with CODIR, data contents are saved as \emph{three} columns in 500,000 files; for other configurations (PFS without CODIR, Ext3 with \texttt{dir\_index}\footnote{\texttt{dir\_index} option enables hashed-tree indexing for Ext3, and it speeds up the metadata performace.}, and OrangeFS), data contents are saved in 1,500,000 files. Figure \ref{spacesavingx} plots the space consumption of metadata and data and the average write latency. By adopting CODIR, PFS performs best at saving metadata cost, and has the lowest average write latency. Meanwhile, with small file aggregation, the data content are saved continuously. It is more space saving than block based storages such as Ext3 and OrangeFS.
 
-\begin{figure}
+\begin{figure}[t]
   % Requires \usepackage{graphicx}
   \includegraphics[width=.5\textwidth]{eps/gis.eps}\\
   \caption{HTTP performance of a GIS Tile Server based on OrangeFS and PFS. \textit{\small The served HTTP request rate of PFS with CODIR is twice of OrangeFS. With less metadata, file read is more faster.}}
@@ -299,7 +297,7 @@
 \subsubsection{File Aggregation}
 
     % B(ioscal.eps, small_creates, small_read_append), R(spacesavingY.eps)
-\begin{figure*}
+\begin{figure*}[t]
   % Requires \usepackage{graphicx}
   \includegraphics[width=\textwidth]{eps/ioscale.eps}\\
   \caption{Small File I/O Scalability in Range [1,1K]. \textit{\small Small file write rates increase linearly with more nodes until the servers are saturated. Double the number of servers almost doubles the aggregated file write bandwidth. However, write bandwidth doesn't increase with more servers because of the limited network message rate.}}\label{ioscale}
@@ -309,7 +307,7 @@
 
     \textbf{Lesson \#2:} Small file ($<$1KB) I/O is linearly scalable with adding more servers and clients.
 
-\begin{figure}
+\begin{figure}[t]
   % Requires \usepackage{graphicx}
   \includegraphics[width=.5\textwidth]{eps/smallcreates.eps}\\
   \caption{Small File Create Rates and Write Bandwidth. \textit{\small For OrangeFS, clients totally creates 4,700,000 files; while for PFS, clients totally creates 47,000,000 files. With increasing the file size, file create rate decreases. The aggregated write bandwidth of PFS with 512KB file is more than 1GB per second.}}\label{smallcreates}
@@ -329,7 +327,7 @@
 
     \textbf{Lesson \#4:} RMW issue in file modifications has little impaction on small file I/O performance.
 
-\begin{figure}
+\begin{figure}[t]
   % Requires \usepackage{graphicx}
   \includegraphics[width=.5\textwidth]{eps/spacesavingy.eps}\\
   \caption{Runtime and Space Consumption of Untar 1 million Gene Sequences. \textit{\small Untar short gene sequences in PFS is fastest and most space efficient with respect to OrangeFS and Ceph. This test runs on one machine.}}
@@ -340,7 +338,7 @@
 
 \subsubsection{Sorted File and Tabular Query}
 
-\begin{figure}
+\begin{figure}[t]
   % Requires \usepackage{graphicx}
   \includegraphics[width=.5\textwidth]{eps/xattr.eps}\\
   \caption{Tag Set and Search Latency. \textit{\small Using sorted file $+$ tabular query interface, tag set and search are faster than external database(BDB) and brute-force scanning search. Especially, external database approach is slow at importing tags to database. And for queries of lower selectivity, sorted file $+$ tabular query performs much more better.}}\label{xattr}
@@ -354,7 +352,7 @@
 
     Firstly, we want to find out whether PFS could scale out. We used \texttt{mdtest} to evaluate metadata performance of PFS, GIGA+, OrangeFS, Ceph, and HBase in cluster A. Our configuration used 8 processes per client to simultaneously create files in a shared directory, and the number of files created is proportional to the number of servers: 12.8 million files on 32 servers. HBase is used to simulate the metadata service of Google's next generation file system\cite{gfs}. PFS use FUSE client to complete the test, and each file \texttt{creat()} results in two RPC calls to server: \texttt{getattr()} to check if a file exists, and \texttt{creat()} to create and return file's attributes.
 
-\begin{figure}
+\begin{figure}[t]
   % Requires \usepackage{graphicx}
   \includegraphics[width=.5\textwidth]{eps/mdscale.eps}\\
   \caption{Metadata Scalability of PFS. \textit{\small PFS delivers a peak throughput of roughly 180,000 file creates per second. The network message rate limits PFS's ability to match the ideal linear scalability. It is fast than GIGA+ because of Two-Stage split strategy and none out-of-core indexing.}}
@@ -367,7 +365,7 @@
 
 \subsubsection{Slice Split}
 
-\begin{figure}
+\begin{figure}[t]
   % Requires \usepackage{graphicx}
   \includegraphics[width=.45\textwidth]{eps/splits.eps}\\
   \caption{Local Only, Random, and Two-Stage Splits. \textit{\small Local only splits couldn't exploit more nodes to improve service rate; Random splits introduces too many remote splits and network latency. Both are not efficient slice split strategy for large scale metadata service. Two-Stage splits performs much more better than them.}}\label{splits}
@@ -379,7 +377,7 @@
 
 \subsubsection{Elastic Speedup}
 
-\begin{figure}
+\begin{figure}[t]
   % Requires \usepackage{graphicx}
   \includegraphics[width=.5\textwidth]{eps/onlineoffline.eps}\\
   \caption{Cumulative Distribution Function of three Runs. \textit{\small Online a server shifts the curve to lower latency(Conf A to B). Offline a server shifts the curve to higher latency(Conf B to C). It means that PFS scales up and down elastically.}}\label{onlineoffline}
@@ -389,7 +387,7 @@
 
 \subsection{Relayed Large File I/O}
 
-\begin{figure*}
+\begin{figure*}[t]
   % Requires \usepackage{graphicx}
   \includegraphics[width=\textwidth]{eps/largeio.eps}\\
   \caption{Large File I/O Bandwidth of PFS. \textit{\small With respect to Ext3, PFS FUSE performs bad on both sequential read and write, and introduce 33\% and 15\% overhead. However, comparing with SkyFS in large cluster, PFS performs better.}}\label{largeio}

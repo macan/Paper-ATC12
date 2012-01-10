@@ -12,26 +12,26 @@
 %  <circle x="144.687" y="95.9428" d="6.38017" lw="1.50" ha="4" fill="yellow"/>
 %  <circle x="154.198" y="95.9428" d="6.38017" lw="1.50" ha="6" fill="magenta"/>
 %  <text x="100.698" y="102.838" t="Clients do file creations in &apos;green, yellow, pink&apos; directories" tex="Clients do file creations in ``green, yellow, pink&apos;&apos; directories" h="4" halign="c" lw="1.50" fill="yellow"/>
-%  <rect x="46.2475" y="35.7854" w="7.84664" h="28.0576" lw="1.50" ha="3" fill="lime"/>
-%  <rect x="55.7586" y="35.7854" w="7.84664" h="28.0576" lw="1.50" ha="4" fill="yellow"/>
-%  <rect x="65.2696" y="35.7854" w="7.84664" h="28.0576" lw="1.50" ha="6" fill="magenta"/>
-%  <rect x="89.0473" y="35.7854" w="7.84664" h="28.0576" lw="1.50" ha="3" fill="lime"/>
-%  <rect x="98.5583" y="35.7854" w="7.84664" h="28.0576" lw="1.50" ha="4" fill="yellow"/>
-%  <rect x="108.069" y="35.7854" w="7.84664" h="28.0576" lw="1.50" ha="6" fill="magenta"/>
-%  <rect x="131.847" y="35.7854" w="7.84663" h="28.0576" lw="1.50" ha="3" fill="lime"/>
-%  <rect x="141.358" y="35.7854" w="7.84663" h="28.0576" lw="1.50" ha="4" fill="yellow"/>
-%  <rect x="150.869" y="35.7854" w="7.84663" h="28.0576" lw="1.50" ha="6" fill="magenta"/>
-%  <rect x="41.2542" y="29.3654" w="36.6176" h="40.8975" lw="2.00" lc="gray"/>
-%  <rect x="84.054" y="29.3654" w="36.6176" h="40.8976" lw="2.00" lc="gray"/>
-%  <rect x="126.854" y="29.3654" w="36.6175" h="40.8976" lw="2.00" lc="gray"/>
-%  <text x="59.0875" y="22.4699" t="Storage Server A" h="5" halign="c" lw="1.50"/>
-%  <text x="101.887" y="22.4699" t="Storage Server B" h="5" halign="c" lw="1.50"/>
-%  <text x="144.687" y="22.4699" t="Storage Server C" h="5" halign="c" lw="1.50"/>
-%  <line x1="77.8718" y1="87.1451" x2="50.5275" y2="66.9341" arr2="h44" lw="1.50"/>
+%  <rect x="46.2475" y="37.2714" w="7.84664" h="28.0576" lw="1.50" ha="3" fill="lime"/>
+%  <rect x="55.7586" y="37.2714" w="7.84664" h="28.0576" lw="1.50" ha="4" fill="yellow"/>
+%  <rect x="65.2696" y="37.2714" w="7.84664" h="28.0576" lw="1.50" ha="6" fill="magenta"/>
+%  <rect x="89.0473" y="37.2714" w="7.84664" h="28.0576" lw="1.50" ha="3" fill="lime"/>
+%  <rect x="98.5583" y="37.2714" w="7.84664" h="28.0576" lw="1.50" ha="4" fill="yellow"/>
+%  <rect x="108.069" y="37.2714" w="7.84664" h="28.0576" lw="1.50" ha="6" fill="magenta"/>
+%  <rect x="131.847" y="37.2714" w="7.84663" h="28.0576" lw="1.50" ha="3" fill="lime"/>
+%  <rect x="141.358" y="37.2714" w="7.84663" h="28.0576" lw="1.50" ha="4" fill="yellow"/>
+%  <rect x="150.869" y="37.2714" w="7.84663" h="28.0576" lw="1.50" ha="6" fill="magenta"/>
+%  <rect x="41.2542" y="30.8515" w="36.6176" h="40.8975" lw="2.00" lc="gray"/>
+%  <rect x="84.054" y="30.8515" w="36.6176" h="40.8976" lw="2.00" lc="gray"/>
+%  <rect x="126.854" y="30.8515" w="36.6175" h="40.8976" lw="2.00" lc="gray"/>
+%  <text x="59.0875" y="23.956" t="Storage Server A" h="5" halign="c" lw="1.50"/>
+%  <text x="101.887" y="23.956" t="Storage Server B" h="5" halign="c" lw="1.50"/>
+%  <text x="144.687" y="23.956" t="Storage Server C" h="5" halign="c" lw="1.50"/>
+%  <line x1="77.8718" y1="87.5697" x2="50.5275" y2="67.3587" arr2="h44" lw="1.50"/>
 %  <line x1="49.5764" y1="86.194" x2="91.4251" y2="67.6474" arr2="h44" lw="1.50"/>
 %  <line x1="88.5717" y1="86.6695" x2="92.1384" y2="67.8852" arr2="h44" lw="1.50"/>
 %  <line x1="135.414" y1="87.8584" x2="136.365" y2="67.4096" arr2="h44" lw="1.50"/>
-%  <line x1="60.0386" y1="86.4318" x2="60.5141" y2="66.6963" arr2="h44" lw="1.50"/>
+%  <line x1="60.0386" y1="87.281" x2="60.5141" y2="67.5455" arr2="h44" lw="1.50"/>
 %  <line x1="97.3695" y1="86.9073" x2="101.887" y2="66.9341" arr2="h44" lw="1.50"/>
 %  <line x1="106.643" y1="87.1451" x2="103.789" y2="67.4096" arr2="h44" lw="1.50"/>
 %  <line x1="145.163" y1="87.6206" x2="145.4" y2="67.8852" arr2="h44" lw="1.50"/>
@@ -39,31 +39,31 @@
 %  <line x1="125.189" y1="86.6695" x2="113.3" y2="68.3607" arr2="h44" lw="1.50"/>
 %  <line x1="154.674" y1="87.1451" x2="154.911" y2="68.3607" arr2="h44" lw="1.50"/>
 %  <text x="102.601" y="89.2851" t="File creations are scattered to &apos;A, B, C&apos; servers" h="4" halign="c" lw="1.50"/>
-%  <text x="104.027" y="31.5053" t="Each server sets up a sequential data flow for every directory" h="4" halign="c" lw="1.50"/>
+%  <text x="104.027" y="32.9913" t="Each server sets up a sequential data flow for every directory" h="4" halign="c" lw="1.50"/>
 %  <line x1="116.52" y1="87.8584" x2="133.754" y2="67.8217" arr2="h44" lw="1.50"/>
 %</TpX>
 \begin{figure}
 \centering
 \ifpdf
   \setlength{\unitlength}{1bp}%
-  \begin{picture}(357.78, 251.10)(0,0)
+  \begin{picture}(357.78, 246.89)(0,0)
   \put(0,0){\includegraphics{io_write_flow.pdf}}
-  \put(174.17,236.55){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Clients do file creations in ``green, yellow, pink'' directories}}
+  \put(174.17,232.33){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Clients do file creations in ``green, yellow, pink'' directories}}
   \put(56.22,8.73){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Storage Server A}}
   \put(177.54,8.73){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Storage Server B}}
   \put(298.86,8.73){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Storage Server C}}
-  \put(179.57,198.13){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{File creations are scattered to 'A, B, C' servers}}
+  \put(179.57,193.92){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{File creations are scattered to 'A, B, C' servers}}
   \put(183.61,34.34){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Each server sets up a sequential data flow for every directory}}
   \end{picture}%
 \else
   \setlength{\unitlength}{1bp}%
-  \begin{picture}(357.78, 251.10)(0,0)
+  \begin{picture}(357.78, 246.89)(0,0)
   \put(0,0){\includegraphics{io_write_flow}}
-  \put(174.17,236.55){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Clients do file creations in ``green, yellow, pink'' directories}}
+  \put(174.17,232.33){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Clients do file creations in ``green, yellow, pink'' directories}}
   \put(56.22,8.73){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Storage Server A}}
   \put(177.54,8.73){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Storage Server B}}
   \put(298.86,8.73){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Storage Server C}}
-  \put(179.57,198.13){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{File creations are scattered to 'A, B, C' servers}}
+  \put(179.57,193.92){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{File creations are scattered to 'A, B, C' servers}}
   \put(183.61,34.34){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Each server sets up a sequential data flow for every directory}}
   \end{picture}%
 \fi
