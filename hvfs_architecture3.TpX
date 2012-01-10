@@ -1,0 +1,85 @@
+%<TpX v="5" ArrowsSize="0.7" StarsSize="1" DefaultFontHeight="5" DefaultSymbolSize="30" ApproximationPrecision="0.01" PicScale="1" Border="2" BitmapRes="20000" HatchingStep="2" DottedSize="0.5" DashSize="1" LineWidth="0.3">
+%  <rect x="23.4528" y="92.2523" w="134.158" h="14.2953" lw="3.00" lc="magenta"/>
+%  <text x="66.1713" y="97.0304" t="PFS" h="8" halign="c"/>
+%  <rect x="102.098" y="93.9958" w="48.2102" h="10.8402" li="none" fill="goldenrod"/>
+%  <text x="126.632" y="98.2748" t="Extend Query InterFace" h="4" halign="c">
+%    <font face="@System" bf="1" charset="134"/>
+%  </text>
+%  <line x1="141.582" y1="118.8" x2="141.582" y2="108.071" arr1="h44" arr2="h44" lw="2.00" lc="goldenrod"/>
+%  <text x="123.634" y="111.968" t="Semantic Query" h="5" halign="c"/>
+%  <rect x="79.4472" y="58.876" w="66.1822" h="13.1543" lw="3.00" lc="green"/>
+%  <text x="113.394" y="64.1167" t="PFS Metadata Cache Cluster" h="5" halign="c"/>
+%  <line x1="86.2696" y1="87.4209" x2="86.2696" y2="76.6913" arr1="h44" arr2="h44" lw="2.00" lc="darkred"/>
+%  <line x1="91.975" y1="87.4209" x2="91.975" y2="76.6913" arr1="h44" arr2="h44" lw="2.00" lc="darkred"/>
+%  <line x1="97.6804" y1="87.4209" x2="97.6804" y2="76.6913" arr1="h44" arr2="h44" lw="2.00" lc="darkred"/>
+%  <line x1="103.386" y1="87.4209" x2="103.386" y2="76.6913" arr1="h44" arr2="h44" lw="2.00" lc="darkred"/>
+%  <text x="125.09" y="83.7261" t="Highly Concurrent" h="4" halign="c" lw="2.00"/>
+%  <text x="125.09" y="78.0208" t="Metadata Access" h="4" halign="c" lw="2.00"/>
+%  <rect x="91.999" y="33.2018" w="67.5954" h="12.7838" lw="3.00" lc="darkslateblue"/>
+%  <line x1="152.223" y1="88.4897" x2="152.19" y2="49.494" arr1="h44" arr2="h44" lw="2.00" lc="red"/>
+%  <line x1="135.074" y1="57.4815" x2="135.336" y2="47.3087" arr1="h44" arr2="h44" lw="2.00" lc="slateblue"/>
+%  <line x1="129.502" y1="57.872" x2="129.63" y2="47.3087" arr1="h44" arr2="h44" lw="2.00" lc="slateblue"/>
+%  <line x1="123.664" y1="57.4815" x2="123.925" y2="47.3087" arr1="h44" arr2="h44" lw="2.00" lc="slateblue"/>
+%  <text x="125.312" y="38.2122" t="PFS Storage Cluster" h="5" halign="c" lw="2.00"/>
+%  <rect x="23.5346" y="33.2019" w="22.8214" h="13.1542" lw="3.00" lc="orangered"/>
+%  <rect x="57.7668" y="33.2019" w="22.8214" h="13.1542" lw="3.00" lc="blue"/>
+%  <text x="34.6601" y="38.3685" t="SkyFS" h="5" halign="c" lw="2.00"/>
+%  <text x="69.4628" y="38.3685" t="Ext3" h="5" halign="c" lw="2.00"/>
+%  <line x1="74.3123" y1="88.5757" x2="74.2884" y2="51.873" arr1="h44" arr2="h44" lw="2.00" lc="orangered"/>
+%  <line x1="68.607" y1="88.5757" x2="68.5831" y2="51.873" arr1="h44" arr2="h44" lw="2.00" lc="orangered"/>
+%  <line x1="62.9016" y1="88.5757" x2="62.8777" y2="51.873" arr1="h44" arr2="h44" lw="2.00" lc="orangered"/>
+%  <line x1="40.3654" y1="88.5757" x2="40.3415" y2="51.873" arr1="h44" arr2="h44" lw="2.00" lc="orangered"/>
+%  <line x1="34.6601" y1="88.5757" x2="34.6361" y2="51.873" arr1="h44" arr2="h44" lw="2.00" lc="orangered"/>
+%  <line x1="28.9547" y1="88.5757" x2="28.9308" y2="51.873" arr1="h44" arr2="h44" lw="2.00" lc="orangered"/>
+%  <text x="51.7761" y="70.0333" t="Large File I/O" h="4" halign="c" lw="2.00" lc="black"/>
+%  <text x="151.905" y="53.773" t="Small File I/O" h="4" halign="c" lw="2.00"/>
+%  <text x="102.969" y="51.7761" t="Metadata Access" h="4" halign="c" lw="2.00"/>
+%  <line x1="69.1536" y1="118.8" x2="69.1536" y2="108.071" arr1="h44" arr2="h44" lw="2.00" lc="burlywood"/>
+%  <text x="55.7699" y="111.968" t="POSIX I/O" h="5" halign="c"/>
+%  <text x="42.6476" y="93.14" t="Global Namespace" h="3" halign="c" lw="2.00">
+%    <font face="@System" bf="1" charset="134"/>
+%  </text>
+%  <line x1="118.024" y1="57.4815" x2="118.285" y2="47.3087" arr1="h44" arr2="h44" lw="2.00" lc="slateblue"/>
+%</TpX>
+\begin{figure}
+\centering
+\ifpdf
+  \setlength{\unitlength}{1bp}%
+  \begin{picture}(407.90, 253.98)(0,0)
+  \put(0,0){\includegraphics{hvfs_architecture3.pdf}}
+  \put(126.76,186.60){\fontsize{22.76}{27.31}\selectfont \makebox[0pt]{PFS}}
+  \put(298.15,190.13){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{\textbf{Extend Query InterFace}}}
+  \put(289.65,228.94){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Semantic Query}}
+  \put(260.62,93.30){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{PFS Metadata Cache Cluster}}
+  \put(293.77,148.89){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Highly Concurrent}}
+  \put(293.77,132.72){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Metadata Access}}
+  \put(294.40,19.87){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{PFS Storage Cluster}}
+  \put(37.44,20.32){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{SkyFS}}
+  \put(136.09,20.32){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Ext3}}
+  \put(85.96,110.07){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{\textcolor[rgb]{0, 0, 0}{Large File I/O}}}
+  \put(369.79,63.98){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Small File I/O}}
+  \put(231.07,58.32){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Metadata Access}}
+  \put(97.28,228.94){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{POSIX I/O}}
+  \put(60.08,175.57){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{\textbf{Global Namespace}}}
+  \end{picture}%
+\else
+  \setlength{\unitlength}{1bp}%
+  \begin{picture}(407.90, 253.98)(0,0)
+  \put(0,0){\includegraphics{hvfs_architecture3}}
+  \put(126.76,186.60){\fontsize{22.76}{27.31}\selectfont \makebox[0pt]{PFS}}
+  \put(298.15,190.13){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{\textbf{Extend Query InterFace}}}
+  \put(289.65,228.94){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Semantic Query}}
+  \put(260.62,93.30){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{PFS Metadata Cache Cluster}}
+  \put(293.77,148.89){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Highly Concurrent}}
+  \put(293.77,132.72){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Metadata Access}}
+  \put(294.40,19.87){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{PFS Storage Cluster}}
+  \put(37.44,20.32){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{SkyFS}}
+  \put(136.09,20.32){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Ext3}}
+  \put(85.96,110.07){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{\textcolor[rgb]{0, 0, 0}{Large File I/O}}}
+  \put(369.79,63.98){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Small File I/O}}
+  \put(231.07,58.32){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Metadata Access}}
+  \put(97.28,228.94){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{POSIX I/O}}
+  \put(60.08,175.57){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{\textbf{Global Namespace}}}
+  \end{picture}%
+\fi
+\end{figure}

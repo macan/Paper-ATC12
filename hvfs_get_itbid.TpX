@@ -1,0 +1,162 @@
+%<TpX v="5" ArrowsSize="0.7" StarsSize="1" DefaultFontHeight="5" DefaultSymbolSize="30" ApproximationPrecision="0.01" PicScale="1" Border="2" BitmapRes="20000" HatchingStep="2" DottedSize="0.5" DashSize="1" LineWidth="0.3">
+%  <line x1="65.1779" y1="41.332" x2="130.258" y2="41.332" arr1="r0" arr2="r0"/>
+%  <rect x="47.9983" y="61.1391" w="5.65916" h="10.1056" fill="lightpink"/>
+%  <rect x="53.6574" y="61.1391" w="5.65916" h="10.1056" fill="lightpink"/>
+%  <text x="51.03" y="64.7771" t="1" h="5" halign="c"/>
+%  <text x="56.487" y="64.7771" t="1" h="5" halign="c"/>
+%  <rect x="59.3166" y="61.1391" w="5.65926" h="10.1056"/>
+%  <text x="62.3483" y="64.7771" t="0" h="5" halign="c"/>
+%  <rect x="64.9757" y="61.1391" w="5.65925" h="10.1056" fill="lightpink"/>
+%  <text x="68.0075" y="64.7771" t="1" h="5" halign="c"/>
+%  <rect x="70.6349" y="61.1391" w="5.65925" h="10.1056"/>
+%  <text x="73.6666" y="64.7771" t="0" h="5" halign="c"/>
+%  <rect x="76.2941" y="61.1391" w="5.65925" h="10.1056" fill="lightpink"/>
+%  <text x="79.3258" y="64.7771" t="1" h="5" halign="c"/>
+%  <rect x="81.9532" y="61.1391" w="5.65925" h="10.1056"/>
+%  <text x="84.985" y="64.7771" t="0" h="5" halign="c"/>
+%  <rect x="87.6124" y="61.1391" w="5.65925" h="10.1056" fill="yellow"/>
+%  <text x="90.6442" y="64.7771" t="0" h="5" halign="c"/>
+%  <rect x="93.2716" y="61.1391" w="5.65925" h="10.1056"/>
+%  <text x="96.3034" y="64.7771" t="0" h="5" halign="c"/>
+%  <rect x="98.9308" y="61.1391" w="5.65925" h="10.1056"/>
+%  <text x="101.963" y="64.7771" t="0" h="5" halign="c"/>
+%  <rect x="104.59" y="61.1391" w="5.65925" h="10.1056"/>
+%  <text x="107.622" y="64.7771" t="0" h="5" halign="c"/>
+%  <rect x="132.886" y="61.1391" w="5.65924" h="10.1056"/>
+%  <text x="135.918" y="64.7771" t="0" h="5" halign="c"/>
+%  <rect x="110.249" y="61.1391" w="22.6365" h="10.1056"/>
+%  <text x="121.972" y="64.7771" t="......" h="5" halign="c"/>
+%  <text x="51.03" y="74.2764" t="0" h="5" halign="c"/>
+%  <text x="56.487" y="74.2764" t="1" h="5" halign="c"/>
+%  <text x="62.3483" y="74.2764" t="2" h="5" halign="c"/>
+%  <text x="68.0075" y="74.2764" t="3" h="5" halign="c"/>
+%  <text x="73.6666" y="74.2764" t="4" h="5" halign="c"/>
+%  <text x="79.3258" y="74.2764" t="5" h="5" halign="c"/>
+%  <text x="84.985" y="74.2764" t="6" h="5" halign="c"/>
+%  <text x="90.6442" y="74.2764" t="7" h="5" halign="c"/>
+%  <text x="96.3034" y="74.2764" t="8" h="5" halign="c"/>
+%  <text x="105.803" y="74.2764" t="......" h="5" halign="c"/>
+%  <line x1="65.1779" y1="41.332" x2="116.11" y2="41.332" arr1="r0" arr2="r0" fill="lightpink"/>
+%  <text x="90.8462" y="41.9383" t="Vh" h="4" halign="c" fill="lightpink"/>
+%  <text x="123.184" y="41.9383" t="Vl" h="4" halign="c" fill="lightpink"/>
+%  <text x="90.6441" y="36.8855" t="Hash Value" h="4" fill="lightpink"/>
+%  <star x="90.6441" y="51.8419" s="cross"/>
+%  <circle x="90.6441" y="51.8419" d="4.60889"/>
+%  <line x1="90.6441" y1="48.8102" x2="90.6441" y2="45.1721" arr1="h44" lw="1.50"/>
+%  <line x1="90.6441" y1="59.7243" x2="90.6441" y2="56.0862" arr1="h44" lw="1.50"/>
+%  <arc arr1="h43" x="79.3258" y="69.2236" d="27.9179" a1="3.74164" a2="5.60941"/>
+%  <arc arr1="h43" x="52.0405" y="58.8754" d="32.3835" a1="5.13695" a2="6.41904"/>
+%  <text x="51.8384" y="43.151" t="TS=3" h="4" halign="c"/>
+%  <text x="38.2969" y="64.575" t="Bitmap" h="5" halign="c"/>
+%  <circle x="64.5715" y="15.0169" d="39.3742" li="dot" lw="1.30"/>
+%  <text x="64.5715" y="17.8465" t="Consistent Hash Ring 0" h="3.8" halign="c"/>
+%  <star x="45.3708" y="18.2507" s="dcross"/>
+%  <star x="52.2427" y="30.3775" s="dcross"/>
+%  <star x="72.4539" y="33.005" s="dcross"/>
+%  <star x="81.549" y="24.9204" s="dcross"/>
+%  <star x="81.549" y="4.70915" s="dcross"/>
+%  <star x="72.8582" y="-2.76902" s="dcross"/>
+%  <star x="60.7314" y="-3.9817" s="dcross"/>
+%  <star x="52.6469" y="-0.545784" s="dcross"/>
+%  <arc arr2="h43" x="66.5927" y="30.3775" d="49.2177" a1="2.54903" a2="3.6238" lc="red"/>
+%  <ellipse x="51.9395" y="44.4243" dx="12.3289" dy="5.05282"/>
+%  <text x="39.7117" y="14.8552" t="CS=1" h="4" halign="c"/>
+%  <ellipse x="39.8127" y="16.1285" dx="12.3289" dy="5.05282"/>
+%  <circle x="121.163" y="15.0169" d="39.3741" li="dot" lw="1.30"/>
+%  <text x="121.163" y="17.8465" t="Consistent Hash Ring 1" h="3.8" halign="c"/>
+%  <star x="101.962" y="18.2507" s="dcross"/>
+%  <star x="108.834" y="30.3775" s="dcross"/>
+%  <star x="129.046" y="33.005" s="dcross"/>
+%  <star x="138.141" y="24.9204" s="dcross"/>
+%  <star x="138.141" y="4.70915" s="dcross"/>
+%  <star x="129.45" y="-2.76902" s="dcross"/>
+%  <star x="117.323" y="-3.9817" s="dcross"/>
+%  <star x="109.238" y="-0.545784" s="dcross"/>
+%  <arc arr1="h43" x="73.8687" y="-11.8641" d="82.1175" a1="0.830664" a2="2.33902" lc="blue"/>
+%  <text x="96.3033" y="14.8552" t="SS=2" h="4" halign="c"/>
+%  <ellipse x="96.4043" y="16.1285" dx="12.3289" dy="5.05282"/>
+%  <text x="64.5715" y="9.76198" t="Find the cache server" h="3.5" halign="c"/>
+%  <text x="121.163" y="9.76198" t="Find the storage server" h="3.5" halign="c"/>
+%</TpX>
+\begin{figure}
+\centering
+\ifpdf
+  \setlength{\unitlength}{1bp}%
+  \begin{picture}(322.91, 247.69)(0,0)
+  \put(0,0){\includegraphics{hvfs_get_itbid.pdf}}
+  \put(62.63,203.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{1}}
+  \put(78.10,203.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{1}}
+  \put(94.72,203.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(110.76,203.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{1}}
+  \put(126.80,203.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(142.84,203.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{1}}
+  \put(158.88,203.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(174.93,203.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(190.97,203.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(207.01,203.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(223.05,203.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(303.26,203.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(263.73,203.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{......}}
+  \put(62.63,230.90){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(78.10,230.90){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{1}}
+  \put(94.72,230.90){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{2}}
+  \put(110.76,230.90){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{3}}
+  \put(126.80,230.90){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{4}}
+  \put(142.84,230.90){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{5}}
+  \put(158.88,230.90){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{6}}
+  \put(174.93,230.90){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{7}}
+  \put(190.97,230.90){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{8}}
+  \put(217.89,230.90){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{......}}
+  \put(175.50,139.24){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Vh}}
+  \put(267.17,139.24){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Vl}}
+  \put(174.93,124.91){\fontsize{11.38}{13.66}\selectfont Hash Value}
+  \put(64.92,142.68){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{TS=3}}
+  \put(26.54,203.40){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Bitmap}}
+  \put(101.02,70.95){\fontsize{10.81}{12.97}\selectfont \makebox[0pt]{Consistent Hash Ring 0}}
+  \put(30.55,62.47){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{CS=1}}
+  \put(261.44,70.95){\fontsize{10.81}{12.97}\selectfont \makebox[0pt]{Consistent Hash Ring 1}}
+  \put(190.97,62.47){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{SS=2}}
+  \put(101.02,48.03){\fontsize{9.96}{11.95}\selectfont \makebox[0pt]{Find the cache server}}
+  \put(261.44,48.03){\fontsize{9.96}{11.95}\selectfont \makebox[0pt]{Find the storage server}}
+  \end{picture}%
+\else
+  \setlength{\unitlength}{1bp}%
+  \begin{picture}(322.91, 247.69)(0,0)
+  \put(0,0){\includegraphics{hvfs_get_itbid}}
+  \put(62.63,203.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{1}}
+  \put(78.10,203.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{1}}
+  \put(94.72,203.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(110.76,203.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{1}}
+  \put(126.80,203.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(142.84,203.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{1}}
+  \put(158.88,203.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(174.93,203.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(190.97,203.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(207.01,203.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(223.05,203.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(303.26,203.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(263.73,203.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{......}}
+  \put(62.63,230.90){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(78.10,230.90){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{1}}
+  \put(94.72,230.90){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{2}}
+  \put(110.76,230.90){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{3}}
+  \put(126.80,230.90){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{4}}
+  \put(142.84,230.90){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{5}}
+  \put(158.88,230.90){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{6}}
+  \put(174.93,230.90){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{7}}
+  \put(190.97,230.90){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{8}}
+  \put(217.89,230.90){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{......}}
+  \put(175.50,139.24){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Vh}}
+  \put(267.17,139.24){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Vl}}
+  \put(174.93,124.91){\fontsize{11.38}{13.66}\selectfont Hash Value}
+  \put(64.92,142.68){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{TS=3}}
+  \put(26.54,203.40){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Bitmap}}
+  \put(101.02,70.95){\fontsize{10.81}{12.97}\selectfont \makebox[0pt]{Consistent Hash Ring 0}}
+  \put(30.55,62.47){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{CS=1}}
+  \put(261.44,70.95){\fontsize{10.81}{12.97}\selectfont \makebox[0pt]{Consistent Hash Ring 1}}
+  \put(190.97,62.47){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{SS=2}}
+  \put(101.02,48.03){\fontsize{9.96}{11.95}\selectfont \makebox[0pt]{Find the cache server}}
+  \put(261.44,48.03){\fontsize{9.96}{11.95}\selectfont \makebox[0pt]{Find the storage server}}
+  \end{picture}%
+\fi
+\end{figure}

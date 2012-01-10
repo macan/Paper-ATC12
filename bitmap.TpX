@@ -1,0 +1,180 @@
+%<TpX v="5" ArrowsSize="0.7" StarsSize="1" DefaultFontHeight="5" DefaultSymbolSize="30" ApproximationPrecision="0.01" PicScale="1" Border="2" BitmapRes="20000" HatchingStep="2" DottedSize="0.5" DashSize="1" LineWidth="0.3">
+%  <rect x="47.9983" y="41.8016" w="5.65916" h="10.1056" fill="lightpink"/>
+%  <rect x="53.6574" y="41.8016" w="5.65916" h="10.1056" fill="lightpink"/>
+%  <text x="51.03" y="45.4396" t="1" h="5" halign="c"/>
+%  <text x="56.487" y="45.4396" t="1" h="5" halign="c"/>
+%  <rect x="59.3166" y="41.8016" w="5.65926" h="10.1056"/>
+%  <text x="62.3483" y="45.4396" t="0" h="5" halign="c"/>
+%  <rect x="64.9757" y="41.8016" w="5.65925" h="10.1056" fill="lightpink"/>
+%  <text x="68.0075" y="45.4396" t="1" h="5" halign="c"/>
+%  <rect x="70.6349" y="41.8016" w="5.65925" h="10.1056"/>
+%  <text x="73.6666" y="45.4396" t="0" h="5" halign="c"/>
+%  <rect x="76.2941" y="41.8016" w="5.65925" h="10.1056" fill="lightpink"/>
+%  <text x="79.3258" y="45.4396" t="1" h="5" halign="c"/>
+%  <rect x="81.9532" y="41.8016" w="5.65925" h="10.1056"/>
+%  <text x="84.985" y="45.4396" t="0" h="5" halign="c"/>
+%  <rect x="87.6124" y="41.8016" w="5.65925" h="10.1056" fill="yellow"/>
+%  <text x="89.5162" y="44.1504" t="0" h="5" halign="c"/>
+%  <rect x="93.2716" y="41.8016" w="5.65925" h="10.1056"/>
+%  <text x="96.3034" y="45.4396" t="0" h="5" halign="c"/>
+%  <rect x="98.9308" y="41.8016" w="5.65925" h="10.1056"/>
+%  <text x="101.963" y="45.4396" t="0" h="5" halign="c"/>
+%  <rect x="104.59" y="41.8016" w="5.65925" h="10.1056"/>
+%  <text x="107.622" y="45.4396" t="0" h="5" halign="c"/>
+%  <rect x="132.886" y="41.8016" w="5.65924" h="10.1056"/>
+%  <text x="135.918" y="45.4396" t="0" h="5" halign="c"/>
+%  <rect x="110.249" y="41.8016" w="22.6365" h="10.1056"/>
+%  <text x="121.972" y="45.4396" t="......" h="5" halign="c"/>
+%  <text x="51.03" y="35.6013" t="0" h="5" halign="c"/>
+%  <text x="56.487" y="35.6013" t="1" h="5" halign="c"/>
+%  <text x="62.3483" y="35.6013" t="2" h="5" halign="c"/>
+%  <text x="68.0075" y="35.6013" t="3" h="5" halign="c"/>
+%  <text x="73.6666" y="35.6013" t="4" h="5" halign="c"/>
+%  <text x="79.3258" y="35.6013" t="5" h="5" halign="c"/>
+%  <text x="84.985" y="35.6013" t="6" h="5" halign="c"/>
+%  <text x="90.6442" y="35.6013" t="7" h="5" halign="c"/>
+%  <text x="96.3034" y="35.6013" t="8" h="5" halign="c"/>
+%  <text x="105.803" y="35.6013" t="......" h="5" halign="c"/>
+%  <rect x="47.7621" y="64.9561" w="10.3134" h="20.7879"/>
+%  <rect x="63.8767" y="64.9561" w="10.3134" h="20.7879"/>
+%  <rect x="79.9913" y="64.9561" w="10.3134" h="20.7879"/>
+%  <rect x="96.1059" y="64.9561" w="10.3134" h="20.7879"/>
+%  <text x="52.9188" y="87.0331" t="Slice 0" h="4" halign="c"/>
+%  <text x="69.0334" y="87.0331" t="Slice 1" h="4" halign="c"/>
+%  <text x="85.148" y="87.0331" t="Slice 3" h="4" halign="c"/>
+%  <text x="101.263" y="87.0331" t="Slice 5" h="4" halign="c"/>
+%  <text x="52.5965" y="81.5542" t="f000" h="3" halign="c"/>
+%  <text x="52.5965" y="78.3313" t="f002" h="3" halign="c"/>
+%  <text x="52.5965" y="75.1083" t="f016" h="3" halign="c"/>
+%  <text x="52.5965" y="71.8854" t="f032" h="3" halign="c"/>
+%  <text x="68.7111" y="81.5542" t="f001" h="3" halign="c"/>
+%  <text x="68.7111" y="78.3313" t="f009" h="3" halign="c"/>
+%  <text x="84.8257" y="81.5542" t="f003" h="3" halign="c"/>
+%  <text x="84.8257" y="78.3313" t="f007" h="3" halign="c" lc="tomato"/>
+%  <text x="84.8257" y="75.1083" t="f015" h="3" halign="c" lc="tomato"/>
+%  <text x="100.94" y="75.1083" t="f021" h="3" halign="c"/>
+%  <text x="100.94" y="78.3313" t="f013" h="3" halign="c"/>
+%  <text x="100.94" y="81.5542" t="f005" h="3" halign="c"/>
+%  <text x="100.94" y="71.8854" t="f029" h="3" halign="c"/>
+%  <text x="100.94" y="68.6625" t="f037" h="3" halign="c"/>
+%  <text x="136.231" y="93.8819" t="Directory Slices" h="4" halign="c"/>
+%  <text x="137.037" y="55.6096" t="Bitmap" h="4" halign="c"/>
+%  <line x1="135.909" y1="90.4978" x2="135.909" y2="60.2829" arr1="h43" arr2="h43" lw="3.00" lc="gray"/>
+%  <rect x="118.666" y="64.9561" w="10.3134" h="20.7879" li="dot" lc="gray"/>
+%  <text x="123.823" y="87.0331" t="Slice 7" h="4" halign="c" li="none" lc="gray"/>
+%  <text x="123.501" y="81.5542" t="f007" h="3" halign="c" lc="red" fill="red"/>
+%  <text x="123.501" y="78.3313" t="f015" h="3" halign="c" lc="red" fill="red"/>
+%  <arc arr1="h43" x="79.3467" y="46.5855" d="24.0707" a1="0.45766" a2="2.66616" li="dot" lc="red"/>
+%  <line x1="68.8723" y1="62.7001" x2="68.8723" y2="55.4485" arr1="h40"/>
+%  <line x1="117.055" y1="64.1504" x2="90.627" y2="56.6571" arr1="h40" li="dot" lc="gray"/>
+%  <arc arr1="h43" x="104.853" y="72.0779" d="53.8778" a1="0.774837" a2="2.38311" li="dot" lc="red"/>
+%  <text x="91.9334" y="48.179" t="1" h="5" halign="c" lc="gray"/>
+%</TpX>
+\begin{figure}
+\centering
+\ifpdf
+  \setlength{\unitlength}{1bp}%
+  \begin{picture}(299.78, 194.16)(0,0)
+  \put(0,0){\includegraphics{bitmap.pdf}}
+  \put(15.91,36.62){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{1}}
+  \put(31.37,36.62){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{1}}
+  \put(47.99,36.62){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(64.03,36.62){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{1}}
+  \put(80.07,36.62){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(96.11,36.62){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{1}}
+  \put(112.16,36.62){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(125.00,32.96){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(144.24,36.62){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(160.28,36.62){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(176.32,36.62){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(256.53,36.62){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(217.00,36.62){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{......}}
+  \put(15.91,8.73){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(31.37,8.73){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{1}}
+  \put(47.99,8.73){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{2}}
+  \put(64.03,8.73){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{3}}
+  \put(80.07,8.73){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{4}}
+  \put(96.11,8.73){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{5}}
+  \put(112.16,8.73){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{6}}
+  \put(128.20,8.73){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{7}}
+  \put(144.24,8.73){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{8}}
+  \put(171.17,8.73){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{......}}
+  \put(21.26,154.52){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Slice 0}}
+  \put(66.94,154.52){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Slice 1}}
+  \put(112.62,154.52){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Slice 3}}
+  \put(158.30,154.52){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Slice 5}}
+  \put(20.35,138.99){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{f000}}
+  \put(20.35,129.85){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{f002}}
+  \put(20.35,120.72){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{f016}}
+  \put(20.35,111.58){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{f032}}
+  \put(66.03,138.99){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{f001}}
+  \put(66.03,129.85){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{f009}}
+  \put(111.70,138.99){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{f003}}
+  \put(111.70,129.85){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{\textcolor[rgb]{1, 0.38824, 0.27843}{f007}}}
+  \put(111.70,120.72){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{\textcolor[rgb]{1, 0.38824, 0.27843}{f015}}}
+  \put(157.38,120.72){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{f021}}
+  \put(157.38,129.85){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{f013}}
+  \put(157.38,138.99){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{f005}}
+  \put(157.38,111.58){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{f029}}
+  \put(157.38,102.45){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{f037}}
+  \put(257.42,173.94){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Directory Slices}}
+  \put(259.71,65.45){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Bitmap}}
+  \put(222.25,154.52){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{\textcolor[rgb]{0.50196, 0.50196, 0.50196}{Slice 7}}}
+  \put(221.33,138.99){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{\textcolor[rgb]{1, 0, 0}{f007}}}
+  \put(221.33,129.85){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{\textcolor[rgb]{1, 0, 0}{f015}}}
+  \put(131.85,44.38){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{\textcolor[rgb]{0.50196, 0.50196, 0.50196}{1}}}
+  \end{picture}%
+\else
+  \setlength{\unitlength}{1bp}%
+  \begin{picture}(299.78, 194.16)(0,0)
+  \put(0,0){\includegraphics{bitmap}}
+  \put(15.91,36.62){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{1}}
+  \put(31.37,36.62){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{1}}
+  \put(47.99,36.62){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(64.03,36.62){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{1}}
+  \put(80.07,36.62){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(96.11,36.62){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{1}}
+  \put(112.16,36.62){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(125.00,32.96){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(144.24,36.62){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(160.28,36.62){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(176.32,36.62){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(256.53,36.62){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(217.00,36.62){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{......}}
+  \put(15.91,8.73){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{0}}
+  \put(31.37,8.73){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{1}}
+  \put(47.99,8.73){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{2}}
+  \put(64.03,8.73){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{3}}
+  \put(80.07,8.73){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{4}}
+  \put(96.11,8.73){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{5}}
+  \put(112.16,8.73){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{6}}
+  \put(128.20,8.73){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{7}}
+  \put(144.24,8.73){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{8}}
+  \put(171.17,8.73){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{......}}
+  \put(21.26,154.52){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Slice 0}}
+  \put(66.94,154.52){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Slice 1}}
+  \put(112.62,154.52){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Slice 3}}
+  \put(158.30,154.52){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Slice 5}}
+  \put(20.35,138.99){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{f000}}
+  \put(20.35,129.85){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{f002}}
+  \put(20.35,120.72){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{f016}}
+  \put(20.35,111.58){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{f032}}
+  \put(66.03,138.99){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{f001}}
+  \put(66.03,129.85){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{f009}}
+  \put(111.70,138.99){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{f003}}
+  \put(111.70,129.85){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{\textcolor[rgb]{1, 0.38824, 0.27843}{f007}}}
+  \put(111.70,120.72){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{\textcolor[rgb]{1, 0.38824, 0.27843}{f015}}}
+  \put(157.38,120.72){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{f021}}
+  \put(157.38,129.85){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{f013}}
+  \put(157.38,138.99){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{f005}}
+  \put(157.38,111.58){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{f029}}
+  \put(157.38,102.45){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{f037}}
+  \put(257.42,173.94){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Directory Slices}}
+  \put(259.71,65.45){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Bitmap}}
+  \put(222.25,154.52){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{\textcolor[rgb]{0.50196, 0.50196, 0.50196}{Slice 7}}}
+  \put(221.33,138.99){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{\textcolor[rgb]{1, 0, 0}{f007}}}
+  \put(221.33,129.85){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{\textcolor[rgb]{1, 0, 0}{f015}}}
+  \put(131.85,44.38){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{\textcolor[rgb]{0.50196, 0.50196, 0.50196}{1}}}
+  \end{picture}%
+\fi
+\end{figure}

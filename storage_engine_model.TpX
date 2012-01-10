@@ -1,0 +1,224 @@
+%<TpX v="5" ArrowsSize="0.7" StarsSize="1" DefaultFontHeight="5" DefaultSymbolSize="30" ApproximationPrecision="0.01" PicScale="1" Border="2" BitmapRes="20000" HatchingStep="2" DottedSize="0.5" DashSize="1" LineWidth="0.3">
+%  <rect x="91.4744" y="49.0222" w="63.4517" h="16.8438"/>
+%  <line x1="91.4743" y1="57.3289" x2="193.041" y2="57.2591"/>
+%  <line x1="106.472" y1="65.8661" x2="106.472" y2="49.0225"/>
+%  <text x="99.0886" y="60.0977" t="Name" h="4.54545" halign="c" lc="navy"/>
+%  <text x="116.571" y="60.0977" t="Metadata" h="4.54545" halign="c" li="none" lc="navy"/>
+%  <line x1="127.007" y1="65.8661" x2="127.007" y2="49.0225"/>
+%  <rect x="155.011" y="49.0225" w="28.2162" h="16.8241"/>
+%  <line x1="140.375" y1="65.8661" x2="140.375" y2="49.0225"/>
+%  <line x1="185.49" y1="61.4014" x2="190.363" y2="61.4676" li="dot" lw="3.00"/>
+%  <text x="148.083" y="60.3284" t="Small" h="4.5455" halign="c" li="dot" lw="3.00" lc="navy"/>
+%  <text x="164.175" y="60.3284" t="Medium" h="4.5455" halign="c" li="dot" lw="3.00" lc="navy"/>
+%  <text x="98.3806" y="52.3202" t="imagea" tex="\textbf{imagea}" h="3.6364" halign="c"/>
+%  <text x="147.643" y="52.3202" t="imagea-s" h="3.6364" halign="c"/>
+%  <text x="163.751" y="52.3202" t="imagea-m" h="3.6364" halign="c"/>
+%  <line x1="110.902" y1="53.0064" x2="122.909" y2="53.0064" li="dot" lw="2.00"/>
+%  <line x1="172.502" y1="65.8661" x2="172.502" y2="49.0225"/>
+%  <text x="133.512" y="60.3284" t="Orig" h="4.5455" halign="c" li="dot" lw="3.00" lc="navy"/>
+%  <text x="133.84" y="52.3202" t="imagea" h="3.6364" halign="c"/>
+%  <rect x="100.251" y="-10.645" w="32.4501" h="24.609" lc="blue"/>
+%  <rect x="91.4744" y="32.2054" w="63.4517" h="16.8438"/>
+%  <line x1="91.4743" y1="40.5121" x2="193.041" y2="40.5747"/>
+%  <line x1="106.472" y1="49.0493" x2="106.472" y2="32.2057"/>
+%  <line x1="127.007" y1="49.0493" x2="127.007" y2="32.2057"/>
+%  <rect x="155.011" y="32.2325" w="28.2162" h="16.9297"/>
+%  <line x1="140.375" y1="49.0493" x2="140.375" y2="32.2057"/>
+%  <text x="98.3806" y="35.5034" t="imagec" tex="\textbf{imagec}" h="3.6364" halign="c"/>
+%  <text x="147.643" y="35.5034" t="imagec-s" h="3.6364" halign="c"/>
+%  <text x="163.751" y="35.5034" t="imagec-m" h="3.6364" halign="c"/>
+%  <line x1="110.902" y1="36.1896" x2="122.909" y2="36.1896" li="dot" lw="2.00"/>
+%  <line x1="172.502" y1="49.0493" x2="172.502" y2="32.2057"/>
+%  <text x="133.84" y="35.5034" t="imagec" h="3.6364" halign="c"/>
+%  <text x="98.3806" y="43.9118" t="imageb" tex="\textbf{imageb}" h="3.6364" halign="c"/>
+%  <text x="147.643" y="43.9118" t="imageb-s" h="3.6364" halign="c"/>
+%  <text x="163.751" y="43.9118" t="imageb-m" h="3.6364" halign="c"/>
+%  <line x1="110.902" y1="44.598" x2="122.909" y2="44.598" li="dot" lw="2.00"/>
+%  <text x="133.84" y="43.9118" t="imageb" h="3.6364" halign="c"/>
+%  <rect x="136.698" y="-10.645" w="13.7615" h="24.9261" lc="blue"/>
+%  <rect x="155.079" y="-10.4689" w="12.6632" h="24.75" lc="blue"/>
+%  <text x="116.303" y="8.86207" t="imagea,metadata,dataa" h="2.5" halign="c"/>
+%  <text x="116.303" y="4.35126" t="imageb,metadata,datab" h="2.5" halign="c"/>
+%  <text x="116.303" y="-0.159543" t="imagec,metadata,datac" h="2.5" halign="c"/>
+%  <group>
+%    <line x1="112.435" y1="19.7101" x2="114.956" y2="14.5285"/>
+%    <line x1="115.096" y1="14.6685" x2="117.616" y2="19.7101"/>
+%    <line x1="112.435" y1="19.8501" x2="117.616" y2="19.8501"/>
+%  </group>
+%  <line x1="116.266" y1="19.8958" x2="133.858" y2="32.3005"/>
+%  <line x1="114.011" y1="19.8958" x2="95.5163" y2="32.3005"/>
+%  <group>
+%    <line x1="141.835" y1="20.3739" x2="143.321" y2="14.8065"/>
+%    <line x1="143.485" y1="14.9172" x2="146.922" y2="19.3852"/>
+%    <line x1="141.862" y1="20.5114" x2="146.949" y2="19.5226"/>
+%  </group>
+%  <line x1="143.709" y1="20.2455" x2="144.076" y2="32.317"/>
+%  <line x1="145.257" y1="19.8039" x2="151.676" y2="32.3005"/>
+%  <line x1="160.217" y1="20.2363" x2="158.089" y2="32.3471"/>
+%  <line x1="162.465" y1="20.2363" x2="164.754" y2="32.3471"/>
+%  <text x="143.719" y="8.86207" t="imagea-s" h="2.5" halign="c"/>
+%  <text x="143.719" y="4.35126" t="imageb-s" h="2.5" halign="c"/>
+%  <text x="143.719" y="-0.159543" t="imagec-s" h="2.5" halign="c"/>
+%  <text x="161.358" y="-0.159543" t="imagec-m" h="2.5" halign="c"/>
+%  <text x="161.358" y="4.35126" t="imageb-m" h="2.5" halign="c"/>
+%  <text x="161.358" y="8.86207" t="imagea-m" h="2.5" halign="c"/>
+%  <text x="114.913" y="24.8577" t="Grouped" h="4" halign="c"/>
+%  <rect x="71.34" y="-13.2586" w="15.6971" h="32.6135" lc="magenta"/>
+%  <text x="79.7285" y="14.4828" t="slice-x,off1" h="2.5" halign="c"/>
+%  <polyline arr2="h45">87.1957,15.2324 95.4407,15.2324 95.4407,10.0001 99.4046,9.8415</polyline>
+%  <text x="79.7285" y="0.875785" t="slice-y,off2" h="2.5" halign="c"/>
+%  <text x="79.7285" y="-4.15466" t="slice-y,off3" h="2.5" halign="c"/>
+%  <polyline arr2="h45">86.9152,1.94776 93.6965,1.96526 93.6965,-3.26708 99.4046,-3.42563</polyline>
+%  <polyline arr2="h45">86.8786,-2.93614 91.9173,-2.86804 91.9077,-8.76548 99.5631,-8.80275</polyline>
+%  <text x="79.8492" y="-17.4668" t="Boost File" h="4" halign="c" li="none"/>
+%  <text x="139.045" y="-18.6152" t="Aggregrated Storage Files" h="4" halign="c"/>
+%  <text x="178.768" y="-15.4743" t="Sorted Files" h="3" halign="c" lc="red"/>
+%  <line x1="158.867" y1="20.0616" x2="161.388" y2="14.88"/>
+%  <line x1="161.528" y1="15.02" x2="163.89" y2="20.2569"/>
+%  <line x1="158.867" y1="20.2016" x2="164.049" y2="20.2016"/>
+%  <rect x="172.611" y="-10.4689" w="11.5937" h="24.9278" lc="red"/>
+%  <rect x="183.157" y="49.0225" w="9.82761" h="16.8211"/>
+%  <rect x="183.157" y="32.1865" w="9.82777" h="16.8211"/>
+%  <text x="178.132" y="60.3284" t="Tag" h="4.54545" halign="c" li="dot" lw="3.00" lc="navy"/>
+%  <text x="178.296" y="52.3202" t="png" h="3.6364" halign="c"/>
+%  <text x="178.296" y="44.253" t="jpg" h="3.6364" halign="c"/>
+%  <text x="178.296" y="36.1857" t="svg" h="3.6364" halign="c"/>
+%  <group>
+%    <line x1="175.37" y1="19.818" x2="177.98" y2="14.6812"/>
+%    <line x1="178.118" y1="14.8234" x2="180.55" y2="19.9086"/>
+%    <line x1="175.367" y1="19.9578" x2="180.548" y2="20.0484"/>
+%  </group>
+%  <line x1="179.245" y1="19.9782" x2="180.815" y2="32.0896"/>
+%  <line x1="176.554" y1="19.9782" x2="175.208" y2="32.3139"/>
+%  <text x="178.242" y="4.11172" t="png" h="3" halign="c"/>
+%  <text x="178.242" y="8.32072" t="jpg" h="3" halign="c"/>
+%  <text x="178.242" y="-0.097271" t="svg" h="3" halign="c"/>
+%  <rect x="189.71" y="-10.4902" w="11.5937" h="24.9278" lc="maroon"/>
+%  <text x="195.17" y="-18.3749" t="Indirect File" h="3" halign="c" lc="maroon"/>
+%  <rect x="191.356" y="-9.12658" w="8.97148" h="4.26145" fill="magenta"/>
+%  <line x1="195.393" y1="11.2835" x2="195.393" y2="-1.05225" li="dot"/>
+%  <arc arr1="h40" x="116.893" y="21.7129" d="162.154" a1="6.09571" a2="6.68989" lc="darkblue"/>
+%  <arc arr1="h40" x="116.893" y="12.7414" d="162.154" a1="6.09571" a2="6.68989" lc="darkblue"/>
+%  <group>
+%    <text x="80.128" y="51.9818" t="Tabular" h="5" halign="c"/>
+%    <text x="80.128" y="46.6473" t="Directory" h="5" halign="c"/>
+%  </group>
+%  <rect x="101.836" y="-1.74238" w="29.1033" h="13.7849" lc="darkred"/>
+%  <text x="125.315" y="-5.74323" t="slice-x" h="5" halign="c" lc="darkred"/>
+%  <text x="117.191" y="-10.2653" t="Metadata" h="4" halign="c" li="none"/>
+%  <text x="140.881" y="69.0062" t="Direct Columns" h="4.5" halign="c" li="none" lc="navy"/>
+%  <group>
+%    <text x="193.815" y="21.7156" t="Indirect" h="4.5" halign="c" li="none"/>
+%    <text x="193.815" y="16.3417" t="Columns" h="4.5" halign="c" li="none"/>
+%  </group>
+%</TpX>
+\begin{figure}
+\centering
+\ifpdf
+  \setlength{\unitlength}{1bp}%
+  \begin{picture}(385.50, 272.16)(0,0)
+  \put(0,0){\includegraphics{storage_engine_model.pdf}}
+  \put(86.57,231.24){\fontsize{12.93}{15.52}\selectfont \makebox[0pt]{\textcolor[rgb]{0, 0, 0.50196}{Name}}}
+  \put(136.13,231.24){\fontsize{12.93}{15.52}\selectfont \makebox[0pt]{\textcolor[rgb]{0, 0, 0.50196}{Metadata}}}
+  \put(225.45,231.90){\fontsize{12.93}{15.52}\selectfont \makebox[0pt]{\textcolor[rgb]{0, 0, 0.50196}{Small}}}
+  \put(271.07,231.90){\fontsize{12.93}{15.52}\selectfont \makebox[0pt]{\textcolor[rgb]{0, 0, 0.50196}{Medium}}}
+  \put(84.56,209.20){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{\textbf{imagea}}}
+  \put(224.21,209.20){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{imagea-s}}
+  \put(269.87,209.20){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{imagea-m}}
+  \put(184.15,231.90){\fontsize{12.93}{15.52}\selectfont \makebox[0pt]{\textcolor[rgb]{0, 0, 0.50196}{Orig}}}
+  \put(185.08,209.20){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{imagea}}
+  \put(84.56,161.53){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{\textbf{imagec}}}
+  \put(224.21,161.53){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{imagec-s}}
+  \put(269.87,161.53){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{imagec-m}}
+  \put(185.08,161.53){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{imagec}}
+  \put(84.56,185.36){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{\textbf{imageb}}}
+  \put(224.21,185.36){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{imageb-s}}
+  \put(269.87,185.36){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{imageb-m}}
+  \put(185.08,185.36){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{imageb}}
+  \put(135.37,86.01){\fontsize{7.11}{8.54}\selectfont \makebox[0pt]{imagea,metadata,dataa}}
+  \put(135.37,73.22){\fontsize{7.11}{8.54}\selectfont \makebox[0pt]{imageb,metadata,datab}}
+  \put(135.37,60.43){\fontsize{7.11}{8.54}\selectfont \makebox[0pt]{imagec,metadata,datac}}
+  \put(213.08,86.01){\fontsize{7.11}{8.54}\selectfont \makebox[0pt]{imagea-s}}
+  \put(213.08,73.22){\fontsize{7.11}{8.54}\selectfont \makebox[0pt]{imageb-s}}
+  \put(213.08,60.43){\fontsize{7.11}{8.54}\selectfont \makebox[0pt]{imagec-s}}
+  \put(263.08,60.43){\fontsize{7.11}{8.54}\selectfont \makebox[0pt]{imagec-m}}
+  \put(263.08,73.22){\fontsize{7.11}{8.54}\selectfont \makebox[0pt]{imageb-m}}
+  \put(263.08,86.01){\fontsize{7.11}{8.54}\selectfont \makebox[0pt]{imagea-m}}
+  \put(131.43,131.35){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Grouped}}
+  \put(31.69,101.94){\fontsize{7.11}{8.54}\selectfont \makebox[0pt]{slice-x,off1}}
+  \put(31.69,63.37){\fontsize{7.11}{8.54}\selectfont \makebox[0pt]{slice-y,off2}}
+  \put(31.69,49.11){\fontsize{7.11}{8.54}\selectfont \makebox[0pt]{slice-y,off3}}
+  \put(32.03,11.37){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Boost File}}
+  \put(199.83,8.12){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Aggregrated Storage Files}}
+  \put(312.43,17.02){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{\textcolor[rgb]{1, 0, 0}{Sorted Files}}}
+  \put(310.63,231.90){\fontsize{12.93}{15.52}\selectfont \makebox[0pt]{\textcolor[rgb]{0, 0, 0.50196}{Tag}}}
+  \put(311.10,209.20){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{png}}
+  \put(311.10,186.33){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{jpg}}
+  \put(311.10,163.46){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{svg}}
+  \put(310.94,72.54){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{png}}
+  \put(310.94,84.47){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{jpg}}
+  \put(310.94,60.61){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{svg}}
+  \put(358.93,8.80){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{\textcolor[rgb]{0.50196, 0, 0}{Indirect File}}}
+  \put(32.83,208.24){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Tabular}}
+  \put(32.83,193.11){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Directory}}
+  \put(160.91,44.61){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{\textcolor[rgb]{0.5451, 0, 0}{slice-x}}}
+  \put(137.89,31.79){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Metadata}}
+  \put(205.04,256.49){\fontsize{12.80}{15.36}\selectfont \makebox[0pt]{\textcolor[rgb]{0, 0, 0.50196}{Direct Columns}}}
+  \put(355.09,122.44){\fontsize{12.80}{15.36}\selectfont \makebox[0pt]{Indirect}}
+  \put(355.09,107.21){\fontsize{12.80}{15.36}\selectfont \makebox[0pt]{Columns}}
+  \end{picture}%
+\else
+  \setlength{\unitlength}{1bp}%
+  \begin{picture}(385.50, 272.16)(0,0)
+  \put(0,0){\includegraphics{storage_engine_model}}
+  \put(86.57,231.24){\fontsize{12.93}{15.52}\selectfont \makebox[0pt]{\textcolor[rgb]{0, 0, 0.50196}{Name}}}
+  \put(136.13,231.24){\fontsize{12.93}{15.52}\selectfont \makebox[0pt]{\textcolor[rgb]{0, 0, 0.50196}{Metadata}}}
+  \put(225.45,231.90){\fontsize{12.93}{15.52}\selectfont \makebox[0pt]{\textcolor[rgb]{0, 0, 0.50196}{Small}}}
+  \put(271.07,231.90){\fontsize{12.93}{15.52}\selectfont \makebox[0pt]{\textcolor[rgb]{0, 0, 0.50196}{Medium}}}
+  \put(84.56,209.20){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{\textbf{imagea}}}
+  \put(224.21,209.20){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{imagea-s}}
+  \put(269.87,209.20){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{imagea-m}}
+  \put(184.15,231.90){\fontsize{12.93}{15.52}\selectfont \makebox[0pt]{\textcolor[rgb]{0, 0, 0.50196}{Orig}}}
+  \put(185.08,209.20){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{imagea}}
+  \put(84.56,161.53){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{\textbf{imagec}}}
+  \put(224.21,161.53){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{imagec-s}}
+  \put(269.87,161.53){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{imagec-m}}
+  \put(185.08,161.53){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{imagec}}
+  \put(84.56,185.36){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{\textbf{imageb}}}
+  \put(224.21,185.36){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{imageb-s}}
+  \put(269.87,185.36){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{imageb-m}}
+  \put(185.08,185.36){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{imageb}}
+  \put(135.37,86.01){\fontsize{7.11}{8.54}\selectfont \makebox[0pt]{imagea,metadata,dataa}}
+  \put(135.37,73.22){\fontsize{7.11}{8.54}\selectfont \makebox[0pt]{imageb,metadata,datab}}
+  \put(135.37,60.43){\fontsize{7.11}{8.54}\selectfont \makebox[0pt]{imagec,metadata,datac}}
+  \put(213.08,86.01){\fontsize{7.11}{8.54}\selectfont \makebox[0pt]{imagea-s}}
+  \put(213.08,73.22){\fontsize{7.11}{8.54}\selectfont \makebox[0pt]{imageb-s}}
+  \put(213.08,60.43){\fontsize{7.11}{8.54}\selectfont \makebox[0pt]{imagec-s}}
+  \put(263.08,60.43){\fontsize{7.11}{8.54}\selectfont \makebox[0pt]{imagec-m}}
+  \put(263.08,73.22){\fontsize{7.11}{8.54}\selectfont \makebox[0pt]{imageb-m}}
+  \put(263.08,86.01){\fontsize{7.11}{8.54}\selectfont \makebox[0pt]{imagea-m}}
+  \put(131.43,131.35){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Grouped}}
+  \put(31.69,101.94){\fontsize{7.11}{8.54}\selectfont \makebox[0pt]{slice-x,off1}}
+  \put(31.69,63.37){\fontsize{7.11}{8.54}\selectfont \makebox[0pt]{slice-y,off2}}
+  \put(31.69,49.11){\fontsize{7.11}{8.54}\selectfont \makebox[0pt]{slice-y,off3}}
+  \put(32.03,11.37){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Boost File}}
+  \put(199.83,8.12){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Aggregrated Storage Files}}
+  \put(312.43,17.02){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{\textcolor[rgb]{1, 0, 0}{Sorted Files}}}
+  \put(310.63,231.90){\fontsize{12.93}{15.52}\selectfont \makebox[0pt]{\textcolor[rgb]{0, 0, 0.50196}{Tag}}}
+  \put(311.10,209.20){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{png}}
+  \put(311.10,186.33){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{jpg}}
+  \put(311.10,163.46){\fontsize{10.35}{12.42}\selectfont \makebox[0pt]{svg}}
+  \put(310.94,72.54){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{png}}
+  \put(310.94,84.47){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{jpg}}
+  \put(310.94,60.61){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{svg}}
+  \put(358.93,8.80){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{\textcolor[rgb]{0.50196, 0, 0}{Indirect File}}}
+  \put(32.83,208.24){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Tabular}}
+  \put(32.83,193.11){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Directory}}
+  \put(160.91,44.61){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{\textcolor[rgb]{0.5451, 0, 0}{slice-x}}}
+  \put(137.89,31.79){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Metadata}}
+  \put(205.04,256.49){\fontsize{12.80}{15.36}\selectfont \makebox[0pt]{\textcolor[rgb]{0, 0, 0.50196}{Direct Columns}}}
+  \put(355.09,122.44){\fontsize{12.80}{15.36}\selectfont \makebox[0pt]{Indirect}}
+  \put(355.09,107.21){\fontsize{12.80}{15.36}\selectfont \makebox[0pt]{Columns}}
+  \end{picture}%
+\fi
+\end{figure}

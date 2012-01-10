@@ -1,0 +1,118 @@
+%<TpX v="5" ArrowsSize="0.7" StarsSize="1" DefaultFontHeight="5" DefaultSymbolSize="30" ApproximationPrecision="0.01" PicScale="1" Border="2" BitmapRes="20000" HatchingStep="2" DottedSize="0.5" DashSize="1" LineWidth="0.3">
+%  <text x="45.3046" y="48.6041" t="(a) Plain Model (N Copy)" h="5" halign="c" li="dot" lw="3.00"/>
+%  <text x="133.376" y="42.0068" t="(c) Column Oriented Tabular Model (CODIR)" h="5" halign="c" li="dot" lw="3.00"/>
+%  <rect x="16.0536" y="75.1199" w="40.4048" h="18.336"/>
+%  <line x1="34.9951" y1="93.4635" x2="35.0986" y2="56.8244"/>
+%  <text x="26.0016" y="87.0488" t="Name" h="5" halign="c"/>
+%  <text x="46.0692" y="87.0488" t="Metadata" h="5" halign="c" li="none"/>
+%  <line x1="16.0536" y1="83.8338" x2="73.527" y2="83.7431"/>
+%  <text x="25.9675" y="78.4937" t="imagea" tex="\textbf{imagea}" h="4" halign="c" lc="black"/>
+%  <rect x="16.0536" y="56.8178" w="40.4048" h="18.2306"/>
+%  <line x1="16.0536" y1="65.8446" x2="73.5839" y2="65.7849"/>
+%  <text x="25.7788" y="69.4369" t="imagea-s" tex="\textbf{imagea-s}" h="4" halign="c"/>
+%  <text x="25.7788" y="60.3802" t="imagea-m" tex="\textbf{imagea-m}" h="4" halign="c"/>
+%  <line x1="38.7773" y1="79.6258" x2="51.9851" y2="79.6258" li="dot" lw="2.00" lc="red"/>
+%  <line x1="38.7773" y1="70.3803" x2="51.9851" y2="70.3803" li="dot" lw="2.00" lc="red"/>
+%  <line x1="38.7773" y1="61.3236" x2="51.9851" y2="61.3236" li="dot" lw="2.00" lc="red"/>
+%  <rect x="87.1828" y="50.8252" w="69.7969" h="18.5282"/>
+%  <line x1="87.1827" y1="59.9625" x2="181.599" y2="59.9625"/>
+%  <line x1="103.68" y1="69.3534" x2="103.68" y2="50.8255"/>
+%  <text x="95.5584" y="63.0082" t="Name" h="5" halign="c"/>
+%  <text x="114.789" y="63.0082" t="Metadata" h="5" halign="c" li="none"/>
+%  <line x1="126.269" y1="69.3534" x2="126.269" y2="50.8255"/>
+%  <rect x="156.98" y="50.8255" w="24.3656" h="18.528"/>
+%  <line x1="141.497" y1="69.3534" x2="141.497" y2="50.8255"/>
+%  <line x1="174.064" y1="64.4423" x2="179.424" y2="64.5151" li="dot" lw="3.00"/>
+%  <text x="149.452" y="63.262" t="Col 1" h="5" halign="c" li="dot" lw="3.00"/>
+%  <text x="164.813" y="63.262" t="Col 2" h="5" halign="c" li="dot" lw="3.00"/>
+%  <text x="95.6163" y="54.453" t="imagea" tex="\textbf{imagea}" h="4" halign="c"/>
+%  <text x="149.317" y="55.8935" t="imagea-s" h="4" halign="c"/>
+%  <text x="164.825" y="55.8935" t="image-m" h="4" halign="c"/>
+%  <line x1="108.553" y1="55.2078" x2="121.761" y2="55.2078" li="dot" lw="2.00"/>
+%  <rect x="89.0175" y="88.3146" w="70.9868" h="18.3904"/>
+%  <text x="98.1549" y="100.244" t="Name" h="5" halign="c"/>
+%  <text x="133.615" y="100.108" t="Metadata (w/ xattr)" h="5" halign="c" li="none"/>
+%  <line x1="89.0175" y1="96.944" x2="177.245" y2="96.9959"/>
+%  <text x="97.9109" y="91.6883" t="imagea" tex="\textbf{imagea}" h="4" halign="c"/>
+%  <line x1="144.907" y1="92.6555" x2="158.114" y2="92.6555" li="dot" lw="2.00" lc="red"/>
+%  <line x1="105.638" y1="106.869" x2="105.638" y2="88.2456"/>
+%  <text x="126.358" y="91.861" t="s:(off,len);m:(off,len)" h="3.5" halign="c" li="dot" lw="2.00" lc="red"/>
+%  <text x="131.562" y="79.9414" t="(b) Plain Model w/ xattr (packing)" h="5" halign="c" li="dot" lw="3.00"/>
+%  <line x1="172.022" y1="69.3534" x2="172.022" y2="50.8255"/>
+%  <text x="133.948" y="63.262" t="Col 0" h="5" halign="c" li="dot" lw="3.00"/>
+%  <text x="134.308" y="55.8935" t="imagea" h="4" halign="c"/>
+%  <rect x="56.4789" y="75.1199" w="17.1922" h="18.2747"/>
+%  <rect x="56.4789" y="56.8253" w="17.1922" h="18.2747"/>
+%  <text x="65.1838" y="87.0488" t="Data" h="5" halign="c"/>
+%  <star x="65.316" y="79.4215" s="flower5"/>
+%  <star x="65.316" y="70.7784" s="star6"/>
+%  <star x="65.316" y="61.415" s="star5"/>
+%  <rect x="159.891" y="88.3146" w="17.3534" h="18.3328"/>
+%  <text x="168.325" y="100.59" t="Data" h="5" halign="c"/>
+%  <star x="163.56" y="92.6743" s="flower5"/>
+%  <star x="168.169" y="92.8184" s="star6"/>
+%  <star x="172.779" y="92.8184" s="star5"/>
+%  <star x="134.173" y="52.9159" s="flower5"/>
+%  <star x="149.587" y="53.204" s="star6"/>
+%  <star x="164.908" y="53.348" s="star5"/>
+%</TpX>
+\begin{figure}
+\centering
+\ifpdf
+  \setlength{\unitlength}{1bp}%
+  \begin{picture}(480.60, 198.26)(0,0)
+  \put(0,0){\includegraphics{directory_model.pdf}}
+  \put(88.59,27.43){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{(a) Plain Model (N Copy)}}
+  \put(338.24,8.73){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{(c) Column Oriented Tabular Model (CODIR)}}
+  \put(33.87,136.41){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Name}}
+  \put(90.75,136.41){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Metadata}}
+  \put(33.77,112.16){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{\textcolor[rgb]{0, 0, 0}{\textbf{imagea}}}}
+  \put(33.24,86.49){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{\textbf{imagea-s}}}
+  \put(33.24,60.81){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{\textbf{imagea-m}}}
+  \put(231.04,68.26){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Name}}
+  \put(285.55,68.26){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Metadata}}
+  \put(383.81,68.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Col 1}}
+  \put(427.35,68.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Col 2}}
+  \put(231.20,44.01){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{\textbf{imagea}}}
+  \put(383.42,48.09){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{imagea-s}}
+  \put(427.38,48.09){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{image-m}}
+  \put(238.40,173.81){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Name}}
+  \put(338.91,173.43){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Metadata (w/ xattr)}}
+  \put(237.71,149.56){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{\textbf{imagea}}}
+  \put(318.34,150.05){\fontsize{9.96}{11.95}\selectfont \makebox[0pt]{\textcolor[rgb]{1, 0, 0}{s:(off,len);m:(off,len)}}}
+  \put(333.09,116.26){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{(b) Plain Model w/ xattr (packing)}}
+  \put(339.86,68.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Col 0}}
+  \put(340.88,48.09){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{imagea}}
+  \put(144.94,136.41){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Data}}
+  \put(437.30,174.79){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Data}}
+  \end{picture}%
+\else
+  \setlength{\unitlength}{1bp}%
+  \begin{picture}(480.60, 198.26)(0,0)
+  \put(0,0){\includegraphics{directory_model}}
+  \put(88.59,27.43){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{(a) Plain Model (N Copy)}}
+  \put(338.24,8.73){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{(c) Column Oriented Tabular Model (CODIR)}}
+  \put(33.87,136.41){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Name}}
+  \put(90.75,136.41){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Metadata}}
+  \put(33.77,112.16){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{\textcolor[rgb]{0, 0, 0}{\textbf{imagea}}}}
+  \put(33.24,86.49){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{\textbf{imagea-s}}}
+  \put(33.24,60.81){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{\textbf{imagea-m}}}
+  \put(231.04,68.26){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Name}}
+  \put(285.55,68.26){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Metadata}}
+  \put(383.81,68.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Col 1}}
+  \put(427.35,68.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Col 2}}
+  \put(231.20,44.01){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{\textbf{imagea}}}
+  \put(383.42,48.09){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{imagea-s}}
+  \put(427.38,48.09){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{image-m}}
+  \put(238.40,173.81){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Name}}
+  \put(338.91,173.43){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Metadata (w/ xattr)}}
+  \put(237.71,149.56){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{\textbf{imagea}}}
+  \put(318.34,150.05){\fontsize{9.96}{11.95}\selectfont \makebox[0pt]{\textcolor[rgb]{1, 0, 0}{s:(off,len);m:(off,len)}}}
+  \put(333.09,116.26){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{(b) Plain Model w/ xattr (packing)}}
+  \put(339.86,68.98){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Col 0}}
+  \put(340.88,48.09){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{imagea}}
+  \put(144.94,136.41){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Data}}
+  \put(437.30,174.79){\fontsize{14.23}{17.07}\selectfont \makebox[0pt]{Data}}
+  \end{picture}%
+\fi
+\end{figure}

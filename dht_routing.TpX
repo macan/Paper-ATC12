@@ -1,0 +1,82 @@
+%<TpX v="5" ArrowsSize="0.7" StarsSize="1" DefaultFontHeight="5" DefaultSymbolSize="30" ApproximationPrecision="0.01" PicScale="1" Border="2" BitmapRes="20000" HatchingStep="2" DottedSize="0.5" DashSize="1" LineWidth="0.3">
+%  <circle x="104.755" y="64.0843" d="43.4687" li="dash" fill="oldlace"/>
+%  <circle x="107.367" y="85.7255" d="6.67467" fill="silver"/>
+%  <circle x="118.561" y="80.8749" d="6.67467" fill="silver"/>
+%  <circle x="126.023" y="65.9499" d="6.67467" fill="silver"/>
+%  <circle x="111.098" y="43.5624" d="6.67466" fill="silver"/>
+%  <circle x="87.9642" y="51.0249" d="6.67466" fill="silver"/>
+%  <circle x="87.9642" y="77.1436" d="6.67467" fill="silver"/>
+%  <text x="106.434" y="91.6955" t="Server Ring" h="4" halign="c" fill="silver"/>
+%  <arc arr2="h40" x="122.665" y="73.5989" d="18.7901" a1="5.5349" a2="7.97341" lc="red"/>
+%  <arc arr1="h40" x="114.456" y="62.0321" d="42.5772" a1="4.66856" a2="7.49186" lc="blue"/>
+%  <line x1="111.471" y1="64.4574" x2="122.665" y2="65.9499" arr2="h40" fill="silver"/>
+%  <text x="107.553" y="33.3014" t="Routing based on Extendible Hashing and DHT" h="3" halign="c" fill="silver"/>
+%  <circle x="104.568" y="64.2708" d="12.2394" fill="lightcyan"/>
+%  <text x="104.568" y="63.1514" t="Clients" h="3" halign="c"/>
+%  <text x="116.695" y="65.9499" t="1" h="3" halign="c" fill="silver"/>
+%  <text x="132.739" y="76.2108" t="2" h="3" halign="c" fill="silver"/>
+%  <text x="132.739" y="53.8233" t="3" h="3" halign="c" fill="silver"/>
+%  <text x="86.6583" y="81.4346" t="Slice 0" h="3" halign="c" fill="silver"/>
+%  <text x="86.8449" y="44.8683" t="Slice 5" h="3" halign="c" fill="silver"/>
+%  <text x="111.658" y="37.4058" t="Slice 7" h="3" halign="c" fill="silver"/>
+%  <text x="126.956" y="59.7933" t="Slice 1" h="3" halign="c" fill="silver"/>
+%  <text x="120.799" y="85.1658" t="Slice 3" h="3" halign="c" fill="silver"/>
+%  <line x1="107.18" y1="57.1814" x2="109.792" y2="48.7861" arr2="h40" fill="silver"/>
+%  <text x="109.419" y="53.8233" t="4" h="3" halign="c" fill="silver"/>
+%  <text x="107.515" y="84.715" t="A" h="4" halign="c"/>
+%  <text x="118.693" y="79.624" t="B" h="4" halign="c"/>
+%  <text x="126.108" y="64.6832" t="C" h="4" halign="c"/>
+%  <text x="111.278" y="42.2166" t="D" h="4" halign="c"/>
+%  <text x="88.0366" y="49.7423" t="E" h="4" halign="c"/>
+%  <text x="88.0366" y="75.9719" t="F" h="4" halign="c"/>
+%</TpX>
+\begin{figure}
+\centering
+\ifpdf
+  \setlength{\unitlength}{1bp}%
+  \begin{picture}(174.32, 187.59)(0,0)
+  \put(0,0){\includegraphics{dht_routing.pdf}}
+  \put(83.99,173.03){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Server Ring}}
+  \put(87.16,7.51){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{Routing based on Extendible Hashing and DHT}}
+  \put(78.70,92.12){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{Clients}}
+  \put(113.07,100.05){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{1}}
+  \put(158.55,129.14){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{2}}
+  \put(158.55,65.68){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{3}}
+  \put(27.93,143.95){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{Slice 0}}
+  \put(28.46,40.29){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{Slice 5}}
+  \put(98.79,19.14){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{Slice 7}}
+  \put(142.16,82.60){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{Slice 1}}
+  \put(124.71,154.52){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{Slice 3}}
+  \put(92.45,65.68){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{4}}
+  \put(87.05,153.25){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{A}}
+  \put(118.74,138.81){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{B}}
+  \put(139.76,96.46){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{C}}
+  \put(97.72,32.78){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{D}}
+  \put(31.84,54.11){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{E}}
+  \put(31.84,128.46){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{F}}
+  \end{picture}%
+\else
+  \setlength{\unitlength}{1bp}%
+  \begin{picture}(174.32, 187.59)(0,0)
+  \put(0,0){\includegraphics{dht_routing}}
+  \put(83.99,173.03){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{Server Ring}}
+  \put(87.16,7.51){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{Routing based on Extendible Hashing and DHT}}
+  \put(78.70,92.12){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{Clients}}
+  \put(113.07,100.05){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{1}}
+  \put(158.55,129.14){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{2}}
+  \put(158.55,65.68){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{3}}
+  \put(27.93,143.95){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{Slice 0}}
+  \put(28.46,40.29){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{Slice 5}}
+  \put(98.79,19.14){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{Slice 7}}
+  \put(142.16,82.60){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{Slice 1}}
+  \put(124.71,154.52){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{Slice 3}}
+  \put(92.45,65.68){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{4}}
+  \put(87.05,153.25){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{A}}
+  \put(118.74,138.81){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{B}}
+  \put(139.76,96.46){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{C}}
+  \put(97.72,32.78){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{D}}
+  \put(31.84,54.11){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{E}}
+  \put(31.84,128.46){\fontsize{11.38}{13.66}\selectfont \makebox[0pt]{F}}
+  \end{picture}%
+\fi
+\end{figure}
