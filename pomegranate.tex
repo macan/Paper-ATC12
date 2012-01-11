@@ -273,11 +273,11 @@
 \begin{figure}[t]
   % Requires \usepackage{graphicx}
   \includegraphics[width=.5\textwidth]{eps/spacesavingx.eps}\\
-  \caption{Space consumption of saving 1.5 million data contents in PFS, Ext3, OrangeFS. \textit{\small By adopting CODIR, the metadata space consumption is only 1/20 comparing with PFS without CODIR. Meanwhile, CODIR uses less data and metadata space comparing with Ext3 and OrangeFS, and has the lowest latency for this test.}}
+  \caption{Space consumption of saving 1.5 million data contents in PFS, Ext3, OrangeFS. \textit{\small By adopting CODIR, the metadata space consumption is only 1/20 comparing with PFS without CODIR. Meanwhile, CODIR uses less data and metadata space comparing with Ext3 and OrangeFS, and has the lowest latency in this test.}}
   \label{spacesavingx}
 \end{figure}
 
-    To find out whether CODIR can save metadata space for \emph{NForm} problem, we run a micro benchmark to write 1,500,000 data contents (total data size is 7.9GB) on one blade of cluster A. For PFS with CODIR, data contents are saved as \emph{three} columns in 500,000 files; for other configurations (PFS without CODIR, Ext3 with \texttt{dir\_index}\footnote{\texttt{dir\_index} option enables hashed-tree indexing for Ext3, and it speeds up the metadata performace.}, and OrangeFS), data contents are saved in 1,500,000 files. Figure \ref{spacesavingx} plots the space consumption of metadata and data and the average write latency. By adopting CODIR, PFS performs best at saving metadata cost, and has the lowest average write latency. Meanwhile, with small file aggregation, the data content are saved continuously. It is more space saving than block based storages such as Ext3 and OrangeFS.
+    To find out whether CODIR can save metadata space for \emph{NForm} problem, we run a micro benchmark to write 1,500,000 data contents (total data size is 7.9GB) on one blade of cluster A. For PFS with CODIR, data contents are saved in \emph{three} columns of 500,000 files; for other configurations (PFS without CODIR, Ext3 with \texttt{dir\_index}\footnote{\texttt{dir\_index} option enables hashed-tree indexing for Ext3, and it speeds up the metadata performace.}, and OrangeFS), data contents are saved in 1,500,000 files. Figure \ref{spacesavingx} plots the space consumption of metadata and data and the average write latency. By adopting CODIR, PFS performs best at saving metadata cost, and has the lowest average write latency. Meanwhile, with small file aggregation, files in PFS are saved continuously without fragments. It is more space saving than block based storages such as Ext3 and OrangeFS.
 
 \begin{figure}[t]
   % Requires \usepackage{graphicx}
@@ -286,9 +286,9 @@
   \label{gis}
 \end{figure}
 
-    Second, we setup a GIS tile server\footnote{Tiles are generated from \emph{OpenStreetMap}'s database, and we use TileStach as the HTTP frontend.} which exports a map tile service via HTTP to evaluate the small file read performance. The tile server keeps one million tile images in OrangeFS and PFS. In OrangeFS, the tiles are saved in 1000 subdirectories with 1000 tiles in each subdir. In PFS with CODIR, the tiles are saved in 200,000 files with 5 tiles (columns) in each file. We run \emph{JMeter} to lookup tiles randomly with 10 threads over Giga Ethernet against OrangeFS and PFS based tile server and get the throughput and latency result in Figure \ref{gis}. PFS with CODIR is two times faster than OrangeFS.
+    Second, we setup a GIS tile server\footnote{Tiles are generated from \emph{OpenStreetMap}'s database, and we use TileStach as the HTTP frontend.} which exports a map tile service via HTTP to evaluate the small file read performance. The tile server keeps one million tile images in OrangeFS and PFS. In OrangeFS, the tiles are saved in 1000 subdirectories with 1000 tiles in each subdir. In PFS with CODIR, the tiles are saved in 200,000 files with 5 tiles (columns) in each file. We run \emph{JMeter} to lookup tiles randomly with 10 threads over Giga Ethernet against OrangeFS and PFS based tile server and get the throughput and latency result in Figure \ref{gis}. PFS with CODIR is \emph{two times} faster than OrangeFS.
 
-    \textbf{Lesson \#1:} CODIR could not only save metadata space, but also increase small file I/O performance.
+    \textbf{Lesson \#1:} CODIR can not only save metadata space, but also increase small file I/O performance.
 
 \subsection{Structured Storage and Interface}
 
@@ -297,13 +297,13 @@
 \subsubsection{File Aggregation}
 
     % B(ioscal.eps, small_creates, small_read_append), R(spacesavingY.eps)
-\begin{figure*}[t]
+\begin{figure}[t]
   % Requires \usepackage{graphicx}
-  \includegraphics[width=\textwidth]{eps/ioscale.eps}\\
-  \caption{Small File I/O Scalability in Range [1,1K]. \textit{\small Small file write rates increase linearly with more nodes until the servers are saturated. Double the number of servers almost doubles the aggregated file write bandwidth. However, write bandwidth doesn't increase with more servers because of the limited network message rate.}}\label{ioscale}
-\end{figure*}
+  \includegraphics[width=.5\textwidth]{eps/ioscale.new.eps}\\
+  \caption{Small File I/O Scalability in Range [1,1K]. \textit{\small Small file write rates increase linearly with more clients until servers are saturated.}}\label{ioscale}
+\end{figure}
 
-    Firstly, we want to find out the scalability of small file aggregation. We ran \texttt{cluster postmark} in cluster A to investigate the scalability of small file(in range [1,1k]) I/O. In each run, we fixed the number of servers, and variate the number of clients to change loads. Figure \ref{ioscale}(a) plots the file write rate varying with different number of clients and servers. When there were fewer servers, e.g. the \texttt{\#Server=1} line, system saturated quickly and the file write rate is not linearly increasing. When there are more servers, e.g. the \texttt{\#Server=32} line, file write rate keeps increasing linearly. At the same time, in cluster A, we find out that write bandwidth of small files is linear correlated with number of clients if the servers are not saturated(Figure \ref{ioscale}(b)).
+    Firstly, we want to find out the scalability of small file aggregation. We ran \texttt{cluster postmark} in cluster A to investigate the scalability of small file (in range [1,1K]B) I/O. In each run, we fixed the number of servers, and variate the number of clients to change loads. Figure \ref{ioscale} plots file write rates varying with different number of clients and servers. When there were fewer servers, e.g. the \texttt{\#Server=1} line, system saturates quickly and the file write rate is not linearly increasing. When there are more servers, e.g. the \texttt{\#Server=32} line, file write rate keeps increasing linearly.
 
     \textbf{Lesson \#2:} Small file ($<$1KB) I/O is linearly scalable with adding more servers and clients.
 
@@ -313,28 +313,28 @@
   \caption{Small File Create Rates and Write Bandwidth. \textit{\small For OrangeFS, clients totally creates 4,700,000 files; while for PFS, clients totally creates 47,000,000 files. With increasing the file size, file create rate decreases. The aggregated write bandwidth of PFS with 512KB file is more than 1GB per second.}}\label{smallcreates}
 \end{figure}
 
-    Secondly, we want to know whether file aggregation is efficient for concurrent small file creates. We ran \texttt{cluster postmark} (47 processes) in cluster A with file size from 1KB to 512KB, and compared the file create rates and bandwidth between PFS and OrangeFS. Both PFS and OrangeFS were configured with 32 metadata and data servers. Figure \ref{smallcreates} plots the aggregated create rates and write bandwidth. The file create rate and write bandwidth of PFS is more than 6000\% of OrangeFS. By enlarging the file size, file create rates of both file systems are decreasing, while the write bandwidth are increasing. OrangeFS performs worse when small files are larger than 64KB. While, the aggregated write bandwidth of PFS with 512KB files is more than 1GB/s. This bandwidth promotion benefits from our scatter and aggregation small I/O flows in Figure \ref{io_write_flow}.
+    Secondly, we want to know whether file aggregation is effective for concurrent small file creations. We ran \texttt{cluster postmark} (47 processes) in cluster A with file size from 1KB to 512KB, and compared file create rates and bandwidth between PFS and OrangeFS. Both PFS and OrangeFS were configured with 32 metadata and data servers. Figure \ref{smallcreates} plots the aggregated create rates and write bandwidth. File create rate and write bandwidth of PFS is more than 6000\% of OrangeFS. By enlarging the file size, file create rates of both file systems are decreasing, while write bandwidth are increasing. OrangeFS performs worse when small files are larger than 64KB. While, the aggregated write bandwidth of PFS with 512KB files is more than 1GB/s. This bandwidth promotion benefits from our scatter and aggregation small I/O flows in Figure \ref{io_write_flow}.
 
     \textbf{Lesson \#3:} Directory based small file aggregation plus appropriate I/O scatter framework can greatly improve concurrent small file creation performance.
 
 \begin{figure}[t]
   % Requires \usepackage{graphicx}
   \includegraphics[width=.5\textwidth]{eps/smallio.read.append.eps}\\
-  \caption{Small File Read/Append Bandwidth. \textit{\small File read and append bandwidth of PFS is larger than that of OrangeFS. The random read bandwidth of PFS drops at 8KB because the network MTU is only 5100B. Both read and append bandwidth drops at 16KB because PFS client uses 16KB buffer page. More pages means longer latency to read and write. The RMW issue in file append has little impaction on I/O bandwidth.}}\label{smalliora}
+  \caption{Small File Read/Append Bandwidth. \textit{\small File read and append bandwidth of PFS is larger than that of OrangeFS. The random read bandwidth of PFS drops at 8KB because the network MTU is only 5100B. Both read and append bandwidth drops at 16KB because PFS client uses 16KB buffer page. Thus files large than 16KB have to load and write more pages, and it means longer latency. The RMW issue in file append has little impaction on I/O bandwidth.}}\label{smalliora}
 \end{figure}
 
-    Thirdly, we want to know how RMW issue affect the small file I/O performance. We ran \texttt{cluster postmark} (75 processes) in cluster B to randomly read or append files (1:1) with file size from 512B to 2MB on PFS and OrangeFS. Both PFS and OrangeFS were configured with 75 metadata and data servers\footnote{OrangeFS failed to run cluster postmark when files are larger than 32KB. This might be a bug of multi-metadata server implementation.}, and \texttt{-noatime} option. Figure \ref{smalliora}\footnote{The aggregated network bandwidth of cluster B is about 200MB/s, and it is limited by the top-level GigEther switch.} plots the I/O bandwidth of file read and append. Both file read and append bandwidth of PFS almost increase with larger file size, and outperform that of OrangeFS. Although there are RMW issues in file append, the append bandwidth increases steadily to the maximum network bandwidth.
+    Next, we want to know how RMW issue affect small file I/O performance. We ran \texttt{cluster postmark} (75 processes) in cluster B to randomly read or append files (1:1) with file size from 512B to 2MB on PFS and OrangeFS. Both PFS and OrangeFS were configured with 75 metadata and data servers\footnote{OrangeFS failed to run cluster postmark when files are larger than 32KB. This might be a bug of multi-metadata server implementation.}, and mounted with \texttt{-noatime} option. Figure \ref{smalliora}\footnote{The aggregated network bandwidth of cluster B is about 200MB/s, and it is mainly limited by the top-level GigEther switch.} plots the I/O bandwidth of file read and append. Both read and append bandwidth of PFS increase with larger file size, and outperform that of OrangeFS. Although there are RMW issues in file append, the append bandwidth increases steadily to the maximum network bandwidth.
 
     \textbf{Lesson \#4:} RMW issue in file modifications has little impaction on small file I/O performance.
 
 \begin{figure}[t]
   % Requires \usepackage{graphicx}
   \includegraphics[width=.5\textwidth]{eps/spacesavingy.eps}\\
-  \caption{Runtime and Space Consumption of Untar 1 million Gene Sequences. \textit{\small Untar short gene sequences in PFS is fastest and most space efficient with respect to OrangeFS and Ceph. This test runs on one machine.}}
+  \caption{Runtime and Space Consumption of import 1 million Gene Sequences. \textit{\small Import short gene sequences into PFS is fastest and most space efficient with respect to OrangeFS and Ceph. This test runs on one machine.}}
   \label{spacesavingy}
 \end{figure}
 
-    Finally, we run a real world application to untar 1,000,000 short gene sequence files (most less than 1KB) on PFS, Ceph, and OrangeFS. Ceph is configured to store one data and metadata replica\footnote{We had tried to tune many different configuration variables, Ceph ran slowly still and finished the test in 3 days.}. Figure \ref{spacesavingy} presents the total space consumption and runtime. Benefit from small file aggregation, PFS is much more space efficient and faster than Ceph and OrangeFS. It is 10 times faster than OrangeFS, and the image size is only 19.7\% of OrangeFS and 7.6\% of Ceph.
+    Finally, we ran a real world gene sequencing program to import 1 million short gene sequence files (most $<$ 1KB) into PFS, OrangeFS and Ceph. Ceph is configured to store one data and metadata replica\footnote{We had tried to tune many different configuration variables, Ceph ran slowly still and finished the test in 3 days.}. Figure \ref{spacesavingy} presents the total space consumption and runtime. Benefit from small file aggregation, PFS is much more space efficient and faster than Ceph and OrangeFS. It is 10 times faster than OrangeFS, and the image size is only 19.7\% of OrangeFS and 7.6\% of Ceph.
 
 \subsubsection{Sorted File and Tabular Query}
 
@@ -367,7 +367,9 @@
 
 \begin{figure}[t]
   % Requires \usepackage{graphicx}
+  \begin{center}
   \includegraphics[width=.45\textwidth]{eps/splits.eps}\\
+  \end{center}
   \caption{Local Only, Random, and Two-Stage Splits. \textit{\small Local only splits couldn't exploit more nodes to improve service rate; Random splits introduces too many remote splits and network latency. Both are not efficient slice split strategy for large scale metadata service. Two-Stage splits performs much more better than them.}}\label{splits}
 \end{figure}
 
@@ -387,13 +389,13 @@
 
 \subsection{Relayed Large File I/O}
 
-\begin{figure*}[t]
+\begin{figure}[t]
   % Requires \usepackage{graphicx}
-  \includegraphics[width=\textwidth]{eps/largeio.eps}\\
-  \caption{Large File I/O Bandwidth of PFS. \textit{\small With respect to Ext3, PFS FUSE performs bad on both sequential read and write, and introduce 33\% and 15\% overhead. However, comparing with SkyFS in large cluster, PFS performs better.}}\label{largeio}
-\end{figure*}
+  \includegraphics[width=.5\textwidth]{eps/largeio.new.eps}\\
+  \caption{Large File I/O Bandwidth in large cluster. \textit{\small Comparing to SkyFS with 30 storage nodes, PFS performs better. It indicates that optimizations for small files do not affect large file I/O.}}\label{largeio}
+\end{figure}
 
-    We want to find out whether our optimizations for small files has affected the large file I/O performance. To understand the tradeoffs of our design choices on large file I/O, we ran \texttt{IOZone} on cluster A to investigate it. In this test, we used Ext3(one node) and SkyFS(30 nodes) as our large file store separately , and all the I/O requests are routed to Ext3 or SkyFS data servers. \texttt{IOZone} is configured with 1MB record size, and the total file size is \emph{three} times larger than memory size. Shown by Figure \ref{largeio}, comparing with Ext3's sequential read, FUSE client of PFS performs bad that the overhead is 33\%. However, comparing with SkyFS, the FUSE client performs better. Because SkyFS also uses FUSE client, we consider that this strange behavior might be some characters of FUSE.
+    We want to find out whether our optimizations for small files has affected the large file I/O performance. To understand the tradeoffs of our design choices on large file I/O, we ran \texttt{IOZone} on cluster A to investigate it. In this test, we used SkyFS (with 30 nodes) as PFS's large file store, and compared PFS with native SkyFS. For PFS, all the I/O requests are routed to SkyFS data servers. \texttt{IOZone} is configured with 1MB record size, and the total file size is \emph{three} times larger than memory size. Shown by Figure \ref{largeio}, comparing with SkyFS, PFS performs a little better. Because SkyFS also uses FUSE client, we consider that this strange behavior might be some characters of FUSE.
 
     \textbf{Lesson \#8:} Even considering the FUSE overhead, large file I/O in PFS has not gone bad in large cluster.
 
@@ -413,20 +415,19 @@
 
 \begin{thebibliography}{99}
 
-\bibitem{facebook-haystack} Beaver, Doug and Kumar, Sanjeev and Li, Harry C. and Sobel, Jason and Vajgel, Peter, \emph{inding a needle in Haystack: facebook's photo storage}. Proceedings of the 9th USENIX conference on Operating systems design and implementation (OSDI 2010).
+\bibitem{facebook-haystack} Beaver, Doug and Kumar, Sanjeev and Li, Harry C., et al, \emph{inding a needle in Haystack: facebook's photo storage}. Proceedings of the 9th USENIX conference on Operating systems design and implementation (OSDI 2010).
 
-\bibitem{taobao-tfs} Wensong Zhang, \emph{Taobao File System}, \url{http://rdc.taobao.com/blog/cs/?p=128}, (2010).
+\bibitem{taobao-tfs} Wensong Zhang, \emph{Taobao File System}, \url{http://rdc.taobao.com/blog/cs/?p=128}.
 
 \bibitem{trf} Rongfeng Tang, Private Communication, (2011).
 
-\bibitem{bigtable} Chang, Fay and Dean, Jeffrey and Ghemawat, Sanjay and Hsieh, Wilson C. and Wallach, Deborah A. and Burrows, Mike, et. al., \emph{Bigtable: a distributed storage system for structured data}, Proceedings of the 7th USENIX Symposium on Operating Systems Design and Implementation, (OSDI 2006)
+\bibitem{bigtable} Chang, Fay and Dean, Jeffrey and Ghemawat, Sanjay, et al, \emph{Bigtable: a distributed storage system for structured data}, Proceedings of the 7th USENIX Symposium on Operating Systems Design and Implementation, (OSDI 2006)
 
-\bibitem{cstore} Stonebraker, Mike and Abadi, Daniel J. and Batkin, Adam and Chen, Xuedong, et. al., \emph{C-store: a column-oriented DBMS}, Proceedings of the 31st international conference on Very large data bases, (VLDB 2005)
+\bibitem{cstore} Stonebraker, Mike and Abadi, Daniel J. and Batkin, Adam, et al, \emph{C-store: a column-oriented DBMS}, Proceedings of the 31st International conference on Very Large Data Bases, (VLDB 2005)
 
 \bibitem{cassandra} Lakshman, Avinash and Malik, Prashant, \emph{Cassandra: a decentralized structured storage system}, SIGOPS Oper. Syst. Rev. vol 44, 35 - 40, (2010)
 
-\bibitem{hbase} HBase, \url{http://hbase.apache.org}, (2010)
-\bibitem{ycsb} Cooper, Brian F. and Silberstein, Adam and Tam, Erwin and Ramakrishnan, Raghu and Sears, Russell, \emph{Benchmarking cloud serving systems with YCSB}, Proceedings of the 1st ACM symposium on Cloud computing, (SoCC '10)
+\bibitem{ycsb} Cooper, Brian F. and Silberstein, Adam and Tam, Erwin, et al, \emph{Benchmarking cloud serving systems with YCSB}, Proceedings of the 1st ACM symposium on Cloud computing, (SoCC '10)
 
 \bibitem{lfs} Rosenblum, Mendel and Ousterhout, John K., \emph{The design and implementation of a log-structured file system}, ACM Transactions on Computer Systems, February, (1992)
 
@@ -434,9 +435,9 @@
 \bibitem{wafl} \emph{Network Appliance: File System Design for an NFS File Server Appliance}, NetApp Inc. (1995).
 \bibitem{gossip} Andr¨¦ Allavena, Alan Demers and John Hopcroft, \emph{Correctness of a Gossip-based Membership Protocol}, Proc. 24th ACM Symposium on Principles of Distributed Computing (PODC 2005).
 
-\bibitem{ch} Karger, D.; Lehman, E.; Leighton, T.; Panigrahy, R.; Levine, M.; Lewin, D., \emph{Consistent Hashing and Random Trees: Distributed Caching Protocols for Relieving Hot Spots on the World Wide Web}, Proceedings of the 29th Annual ACM Symposium on Theory of Computing, (1997)
+\bibitem{ch} Karger, D., Lehman, E., Leighton, T., et al, \emph{Consistent Hashing and Random Trees: Distributed Caching Protocols for Relieving Hot Spots on the World Wide Web}, Proceedings of the 29th ACM Symposium on Theory of Computing, (1997)
 
-\bibitem{reiserfs} Hans Reiser. ReiserFS. \url{www.namesys.com}, (2004).
+\bibitem{reiserfs} Hans Reiser. ReiserFS. \url{www.namesys.com}.
 
 \bibitem{hotcloud} Patil, S., G.A. Gibson, G.R. Ganger, J. Lopez, M. Polte, W. Tantisiriroj, L. Xiao, \emph{In Search of an API for Scalable File Systems: Under the table or above it?}, USENIX Workshop on Hot Topics in Cloud Computing, (HotCloud 2009)
 
@@ -446,29 +447,25 @@
 
 \bibitem{ceph} Weil, Sage A. and Brandt, Scott A. and Miller, Ethan L. and Long, Darrell D. E. and Maltzahn, Carlos, \emph{Ceph: a scalable, high-performance distributed file system}, Proceedings of the 7th symposium on Operating systems design and implementation, (OSDI 2006)
 
-\bibitem{hfs} Zhang, Zhihui and Ghose, Kanad, \emph{hFS: a hybrid file system prototype for improving small file and metadata performance}, Proceedings of the 2nd ACM SIGOPS/EuroSys European Conference on Computer Systems 2007, (EuroSys 2007)
+\bibitem{hfs} Zhang, Zhihui and Ghose, Kanad, \emph{hFS: a hybrid file system prototype for improving small file and metadata performance}, Proceedings of the 2nd ACM SIGOPS/EuroSys European Conference on Computer Systems, (EuroSys 2007)
 
-\bibitem{giga} Swapnil Patil, Garth Gibson, \emph{Scale and concurrency of GIGA+: file system directories with millions of files}, Proceedings of the 9th USENIX conference on File and stroage technologies 2011, (FAST 2011)
+\bibitem{giga} Swapnil Patil, Garth Gibson, \emph{Scale and concurrency of GIGA+: file system directories with millions of files}, Proceedings of the 9th USENIX conference on File and stroage technologies, (FAST 2011)
 
 \bibitem{skyfs} Xing, Jing and Xiong, Jin and Sun, Ninghui and Ma, Jie, \emph{Adaptive and scalable metadata management to support a trillion files}, Proceedings of the Conference on High Performance Computing Networking, Storage and Analysis, (SC 2009)
 
-\bibitem{nisar} Nisar, Arifa and Liao, Wei-keng and Choudhary, Alok, \emph{Scaling parallel I/O performance through I/O delegate and caching system}, Proceedings of the 2008 ACM/IEEE conference on Supercomputing, (SC 2008)
-
-\bibitem{fuse} FUSE, Filesystem in Userspace, \url{http://fuse.sf.net}/.
+\bibitem{fuse} FUSE, Filesystem in Userspace, \url{fuse.sf.net}.
 
 \bibitem{cluster_postmark} Lachaize, Renaud and Flouris, Michail, \emph{Parallel Postmark Benchmark: cluster postmark}, \url{http://michail.flouris.net/2008/06/parallel-postmark-benchmark/}.
 
-\bibitem{gfs} McKusick, Marshall Kirk and Quinlan, Sean, \emph{GFS: Evolution on Fast-forward}, ACM Queue, vol 7, 10-20, (2009)
-
-\bibitem{chord} Stoica, Ion and Morris, Robert and Karger, David and Kaashoek, M. Frans and Balakrishnan, Hari, \emph{Chord: A scalable peer-to-peer lookup service for internet applications}, Proceedings of the 2001 conference on Applications, technologies, architectures, and protocols for computer communications, (SIGCOMM 2001)
+\bibitem{gfs} McKusick, Marshall Kirk and Quinlan, Sean, \emph{GFS: Evolution on Fast-forward}, ACM Queue, (2009)
 
 \bibitem{spyglass} Andrew Leung, Minglong Shao, Timothy Bisson, Shankar Pasupathy, Ethan L. Miller, \emph{Spyglass: Fast, Scalable Metadata Search for Large-Scale Storage Systems}, Proceedings of the 7th USENIX Conference on File and Storage Technologies, (FAST 2009)
 
-\bibitem{smartstore} Yu Hua, Hong Jiang, Yifeng Zhu, Dan Feng and Lei Tian. \emph{SmartStore: A New Metadata Organization Paradigm with Semantic-Awareness for Next-Generation File Systems}, Proceedings of the International Conference for High Performance Computing, Network, Storage and Analysis, ACM/IEEE Supercomputing Conference, (SC 2009)
+\bibitem{smartstore} Yu Hua, Hong Jiang, Yifeng Zhu, Dan Feng and Lei Tian. \emph{SmartStore: A New Metadata Organization Paradigm with Semantic-Awareness for Next-Generation File Systems}, Proceedings of the International Conference for High Performance Computing, Network, Storage and Analysis, (SC 2009)
 
 \bibitem{lustre} P. Schwan, \emph{Lustre: building a file system for 1000-node clusters}, in Proceedings of the Linux Symposium, (2003).
 
-\bibitem{pvfs} Ligon, III, W.B., and Ross, R. B., \emph{PVFS: Parallel Virtual File System}, Beowulf Cluster Computing with Linux, Thomas Sterling, editor, pages 391-430, MIT Press, November, (2001).
+\bibitem{pvfs} Ligon, III, W.B., and Ross, R. B., \emph{PVFS: Parallel Virtual File System}, Beowulf Cluster Computing with Linux, pages 391-430, MIT Press, (2001).
 
 \bibitem{europar08} Michael  Kuhn, Julian  Kunkel, Thomas  Ludwig, \emph{Directory-Based Metadata Optimizations for Small Files in PVFS}, Proceedings of the 14th international Euro-Par conference on Parallel Processing, (EuroPar 2008)
 
@@ -478,7 +475,7 @@
 
 \bibitem{lzo} Markus Oberhumer, LZO Compression, \url{www.oberhumer.com/opensource/lzo}, (2011)
 
-\bibitem{dbfs} Nick Murphy and Mark Tonkelowitz and Mike Vernal, \emph{The Design and Implementation of the Database File System}, (2002)
+%\bibitem{dbfs} Nick Murphy and Mark Tonkelowitz and Mike Vernal, \emph{The Design and Implementation of the Database File System}, (2002)
 
 \end{thebibliography}
 
