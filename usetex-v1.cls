@@ -67,7 +67,7 @@
 \ProcessOptions
 
 % usetex is based on article
-\LoadClass[twocolumn]{article}
+\LoadClass[twocolumn,letter]{article}
 
 % Footnotes are not currently allowed, but
 % endnotes (while a bad idea) are.

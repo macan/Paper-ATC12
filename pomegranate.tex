@@ -14,7 +14,7 @@
 
 \begin{document}
 
-\title{Evolving Directory Model, Storage Structures, and Interface for Large Scale Small File Access}
+\title{Evolving Directory Model, Interface and Storage Structures for Large Scale Small File Access}
 
 %"Everything should be made as simple as possible, but no simpler." -Einstein
 
@@ -26,13 +26,13 @@
 %}{\{macan,xj,md\}@ncic.ac.cn}
 
 \author{
-%\authname{Can Ma$\,^{1,2}$, Jin Xiong$\,^{1}$, Dan Meng$\,^{1}$, Weiping Wang$\,^{1}$}
-\authname{Can Ma, Jin Xiong, Dan Meng, Weiping Wang, Jizhong Han}
+\authname{Can Ma$\,^{1,2}$, Jin Xiong$\,^{1}$, Dan Meng$\,^{1}$, Weiping Wang$\,^{1}$, Jizhong Han$\,^{1}$}
+%\authname{Can Ma, Jin Xiong, Dan Meng, Weiping Wang, Jizhong Han}
 \authurl{\url{{macan,xj,md,wpwang}@ncic.ac.cn}}
-%\authaddr{$\,^{1}$National Research Center for Intelligent Computing Systems,}
-\authaddr{National Research Center for Intelligent Computing Systems,}
-\authaddr{Institute of Computing Technology, CAS, Beijing, China, 100190}
-%\authaddr{$\,^{2}$Tencent Inc. , Shenzhen, China}
+%\authaddr{National Research Center for Intelligent Computing Systems,}
+%\authaddr{National Research Center for Intelligent Computing Systems,}
+\authaddr{$\,^{1}$Institute of Computing Technology, CAS, Beijing, China, 100190}
+\authaddr{$\,^{2}$Intern at Tencent Inc., Shenzhen, China}
 } % end author
 
 %\author{\textit{Author Names Removed for Reviewing}\\
@@ -41,14 +41,14 @@
 \maketitle
 
 \begin{abstract}
-    In emerging popular Web applications, e.g. online photo galleries, documents and social network services, large scale small files are concurrently created and read. These applications exhibit low latency requirements for accessing massive small files. Particularly, \emph{N-Form} and \emph{1-N Mapping} issues of distributed file systems, that affect I/O performance of small files, have not been addressed yet.
+    In emerging popular Web applications, e.g. online photo galleries, document and social network services, large numbers of small files are concurrently created and read. These applications exhibit low latency requirements to access small files. Moreover, \emph{N-Form} and \emph{1-N Mapping} issues of distributed file systems, that affect I/O performance of small files, have not been addressed yet.
 
-    In this paper, we propose to use tabular directory model, structured storage and tabular query interface to address \emph{N-Form} and \emph{1-N Mapping} issues to boost up small file handling. We implement a prototype file system to manage billions of small files, and focus on improving metadata scalability elastically and exploiting locality and parallelism to improve small file I/O.
+    To boost up small file performance and address \emph{N-Form} and \emph{1-N Mapping} issues, we propose a new directory organization method for distributed file systems, which uses tabular directory model, structured storage and tabular query interface. We evaluate the new directory structures in a prototype file system PFS, and focus on improving metadata scalability elastically and exploiting locality and parallelism to improve small file I/O.
 
-    Our evaluation demonstrates that the new directory model, storage structures, and interface can not only save storage space, but also increase small file I/O performance. With 32 servers, we deliver the leading metadata and small file I/O performance: 180,000 file creates per seconds and 1GB/s write bandwidth.
+    Our evaluation shows that the new directory model, interface and storage structures can greatly increase small file I/O performance, as well as save storage space. With 32 servers, PFS delivers the leading small file I/O performance: the file creation rate was 180,000 files per seconds and the write bandwidth was 1GB/s.
 \end{abstract}
 
-%\keywords{Small Files, N-Form, 1-N Mapping, Extendible Hashing, Semantic Data}
+%\keywords{Small Files, N-Form, 1-N Mapping, Column oriented directory}
 
 \section{Introduction}
 
@@ -310,7 +310,7 @@
 \begin{figure}[t]
   % Requires \usepackage{graphicx}
   \includegraphics[width=.5\textwidth]{eps/smallcreates.eps}\\
-  \caption{Small File Create Rates and Write Bandwidth. \textit{\small For OrangeFS, clients totally creates 4,700,000 files; while for PFS, clients totally creates 47,000,000 files. With increasing the file size, file create rate decreases. The aggregated write bandwidth of PFS with 512KB file is more than 1GB per second.}}\label{smallcreates}
+  \caption{Small File Create Rates and Write Bandwidth. \textit{\small For OrangeFS, clients totally creates 4.7 million files; while for PFS, clients totally creates 47 million files. With increasing the file size, file create rate decreases. The aggregated write bandwidth of PFS with 512KB file is more than 1GB/s.}}\label{smallcreates}
 \end{figure}
 
     Secondly, we want to know whether file aggregation is effective for concurrent small file creations. We ran \texttt{cluster postmark} (47 processes) in cluster A with file size from 1KB to 512KB, and compared file create rates and bandwidth between PFS and OrangeFS. Both PFS and OrangeFS were configured with 32 metadata and data servers. Figure \ref{smallcreates} plots the aggregated create rates and write bandwidth. File create rate and write bandwidth of PFS is more than 6000\% of OrangeFS. By enlarging the file size, file create rates of both file systems are decreasing, while write bandwidth are increasing. OrangeFS performs worse when small files are larger than 64KB. While, the aggregated write bandwidth of PFS with 512KB files is more than 1GB/s. This bandwidth promotion benefits from our scatter and aggregation small I/O flows in Figure \ref{io_write_flow}.
@@ -334,23 +334,23 @@
   \label{spacesavingy}
 \end{figure}
 
-    Finally, we ran a real world gene sequencing program to import 1 million short gene sequence files (most $<$ 1KB) into PFS, OrangeFS and Ceph. Ceph is configured to store one data and metadata replica\footnote{We had tried to tune many different configuration variables, Ceph ran slowly still and finished the test in 3 days.}. Figure \ref{spacesavingy} presents the total space consumption and runtime. Benefit from small file aggregation, PFS is much more space efficient and faster than Ceph and OrangeFS. It is 10 times faster than OrangeFS, and the image size is only 19.7\% of OrangeFS and 7.6\% of Ceph.
+    Finally, we ran a real world gene sequencing program to import 1 million short gene sequence files (most $<$ 1KB) into PFS, OrangeFS and Ceph. Ceph is configured to store one data and metadata replica\footnote{We had tried to tune many different configuration variables, Ceph (with FUSE client) ran slowly still and finished the test in 3 days.}. Figure \ref{spacesavingy} presents the total space consumption and runtime. Benefit from small file aggregation, PFS is much more space efficient and faster than Ceph and OrangeFS. It is \emph{10 times} faster than OrangeFS, and the image size is only 19.7\% of OrangeFS and 7.6\% of Ceph.
 
 \subsubsection{Sorted File and Tabular Query}
 
 \begin{figure}[t]
   % Requires \usepackage{graphicx}
   \includegraphics[width=.5\textwidth]{eps/xattr.eps}\\
-  \caption{Tag Set and Search Latency. \textit{\small Using sorted file $+$ tabular query interface, tag set and search are faster than external database(BDB) and brute-force scanning search. Especially, external database approach is slow at importing tags to database. And for queries of lower selectivity, sorted file $+$ tabular query performs much more better.}}\label{xattr}
+  \caption{Tag Set and Search Latency. \textit{\small Using sorted file $+$ tabular query interface, tag set and search are faster than external database(BDB) and brute-force scanning search. Especially, external database approach is slow at importing tags into database. And for queries of lower selectivity, sorted file $+$ tabular query performs much more better.}}\label{xattr}
 \end{figure}
 
-    In this test, we set up a set of files (1 million) and gave each file a specific tag. For CODIR model, file tags were saved in sorted file; for traditional directory model, file tags were saved in extended attributes; while for database model, file tags were saved in external BerkeleyDB\footnote{The database is configured without transaction support, and in Concurrent Data Store mode(CDB).}. For user queries, we test the tabular query interface, and compare it with brute-force scanning and external database queries. The first two tests perform through \texttt{xattr} syscall interface. Figure \ref{xattr} plots tag set and search latency for different selectivity. Comparing with external BDB approach, using tightly coupled sorted files decreases both tag set and search latency. Comparing with brute-force scanning, database based searches are sensitive to query selectivity. For queries with lower selectivity, it performs more better, because more files are ignored to stat.
+    In this test, we set up 1 million files and gave each file a specific tag. For CODIR model, file tags were saved in sorted file; for traditional directory model, file tags were saved in extended attributes; while for external database model, file tags were saved in external BerkeleyDB\footnote{The database is configured \emph{without} transaction support, and in Concurrent Data Store mode (CDB).}. We ran queries through CODIR's tabular query interface, and compared it with brute-force scanning and external database. The first two tests ran through \texttt{xattr} syscall interface. Figure \ref{xattr} plots tag set and search latency for different selectivity. Comparing with external BDB, sorted file decreases both tag set and search latency, because it is compact and tightly coupled with file system. Comparing with brute-force scanning, sorted file and database based searches performs better. Their latencies are sensitive to selectivity. For queries with lower selectivity, the latency is lower, because more files are ignored to stat.
 
-    \textbf{Lesson \#5:} Sorted file with tabular query interface performs better than external database indexing and classic directory scanning.
+    \textbf{Lesson \#5:} Searches based on sorted file with tabular query interface performs better than external database indexing and brute-force directory scanning.
 
 \subsection{Elastic Metadata Service}
 
-    Firstly, we want to find out whether PFS could scale out. We used \texttt{mdtest} to evaluate metadata performance of PFS, GIGA+, OrangeFS, Ceph, and HBase in cluster A. Our configuration used 8 processes per client to simultaneously create files in a shared directory, and the number of files created is proportional to the number of servers: 12.8 million files on 32 servers. HBase is used to simulate the metadata service of Google's next generation file system\cite{gfs}. PFS use FUSE client to complete the test, and each file \texttt{creat()} results in two RPC calls to server: \texttt{getattr()} to check if a file exists, and \texttt{creat()} to create and return file's attributes.
+    Firstly, we want to find out whether PFS could scale out. We used \texttt{mdtest} to evaluate metadata performance of PFS, GIGA+, OrangeFS, Ceph, and HBase in cluster A. Our configuration used 8 processes per client to simultaneously create files in a shared directory, and the number of files created is proportional to the number of servers: 12.8 million files on 32 servers. HBase is used to simulate the metadata service of Google's Colossus file system\cite{gfs}. PFS and OrangeFS use FUSE client to complete the test. Each file \texttt{creat()} in PFS results in two RPC calls to server: \texttt{getattr()} to check if the file exists, and \texttt{creat()} to create and return file's attributes.
 
 \begin{figure}[t]
   % Requires \usepackage{graphicx}
@@ -359,7 +359,7 @@
   \label{mdscale}
 \end{figure}
 
-    We reuse the experiment results of GIGA+, Ceph, and HBase performed on different clusters from the original paper\cite{giga,ceph}. That cluster used quad-core 2.83GHz machines with 10GigE NICs and switches(faster than ours). Figure \ref{mdscale} compares the aggregated file create throughput, in file creates per second. PFS scales \emph{linearly} up to the size of 32-servers configuration, and can sustain 180,000 file creates per second. PFS also demonstrated scalable performance for the concurrent lookup workload delivering a throughput of more than 410,000 file lookups per seconds(not shown). It benefits from our Two-Stage slice split strategy and removing out-of-core indexing. Although OrangeFS (experimental version) had also implemented a GIGA+ like distributed directories, we found that it performs worse than GIGA+(the bottom line).
+    We reuse the experiment results of GIGA+, Ceph, and HBase from the original paper\cite{giga,ceph} that performed on different clusters. Those clusters used quad-core 2.83GHz machines with 10GigE NICs and switches (faster than ours). Figure \ref{mdscale} compares the aggregated file create rates, in file creates/second. PFS scales \emph{linearly} up to the size of 32-servers configuration, and sustains 180,000 file creates per second. PFS also demonstrated scalable performance for concurrent lookup workload and delivered a throughput of more than 410,000 file lookups/second (not shown). It benefits from Two-Stage slice split strategy and removing out-of-core indexing. Although OrangeFS (experimental version) had implemented GIGA+ like distributed directories, we found that it performs worse (the bottom line) than GIGA+.
 
     \textbf{Lesson \#6:} By splitting directory and removing out-of-core index, metadata performance imporves greatly.
 
@@ -373,19 +373,19 @@
   \caption{Local Only, Random, and Two-Stage Splits. \textit{\small Local only splits couldn't exploit more nodes to improve service rate; Random splits introduces too many remote splits and network latency. Both are not efficient slice split strategy for large scale metadata service. Two-Stage splits performs much more better than them.}}\label{splits}
 \end{figure}
 
-    Next, we want to find out the metadata behavior of our Two-Stage slice split strategy(firstly split to remote servers, then split at the local servers). The test runs on cluster B with 75 metadata servers and clients. Clients issued millions of file creation requests. Figure \ref{splits} plots the immediate request rate and numbers of two types of splits in three runs with local only, random, and Two-Stage split strategy. It is obviously that Two-Stage splits are far more better than local only and random splits\footnote{To plot the two stage clearly, we slow the transition from remote splits to local splits in Two-Stage strategy intentionally.}. After entering into local split mode, serviced request rate increases for about \emph{10 times} larger.
+    Next, we want to find out the metadata behavior of Two-Stage slice split strategy (firstly split to remote servers, then split at the local servers). The test ran on cluster B with 75 metadata servers and clients. Clients issued millions of file create requests. Figure \ref{splits} plots instant request rate and numbers of two types of splits in three runs with local only, random, and Two-Stage split strategies. It is obviously that Two-Stage splits are far more better than local only and random splits. After entering into local split mode (after 40s), serviced request rate increases for about \emph{10 times} larger\footnote{To plot the two stage clearly, we slow the transition from remote splits to local splits in Two-Stage strategy intentionally.}.
 
-    \textbf{Lesson \#7:} By exploiting parallelism(more nodes) and locality(local only splits), a simple Two-Stage splits strategy increases the metadata performance greatly.
+    \textbf{Lesson \#7:} By exploiting parallelism (more nodes) and locality (local only splits), a simple Two-Stage splits strategy increases the metadata performance greatly.
 
 \subsubsection{Elastic Speedup}
 
 \begin{figure}[t]
   % Requires \usepackage{graphicx}
   \includegraphics[width=.5\textwidth]{eps/onlineoffline.eps}\\
-  \caption{Cumulative Distribution Function of three Runs. \textit{\small Online a server shifts the curve to lower latency(Conf A to B). Offline a server shifts the curve to higher latency(Conf B to C). It means that PFS scales up and down elastically.}}\label{onlineoffline}
+  \caption{Cumulative Distribution Function of latency. \textit{\small Online a server shifts the curve to lower latency(Conf A to B). Offline a server shifts the curve to higher latency(Conf B to C). It means that PFS scales up and down elastically.}}\label{onlineoffline}
 \end{figure}
 
-    Finally, we want to find out whether the metadata service of PFS could scale up and down elastically. To understand how server changes impacts on the latency of file operations, we run a test to do file creates, lookups, and removes in three configuration. \texttt{Conf A} ran the test on \emph{one} server without any online/offline operation. In \texttt{Conf B}, we ran the test on one server, and online a new server in the test. In \texttt{Conf C}, we ran the test on two server, and offline an existing server in the test. Figure \ref{onlineoffline} plots the cumulative distribution function of request latency in three configurations. Adding a server made the average request latency smaller, while deleting a server made the latency larger. For \texttt{Conf A,B,C}, half of the requests' latency are under 1ms, and 99\% of them are under 2.2, 2.5, and 2.7ms.
+    Finally, we want to find out whether the metadata service of PFS could scale up and down elastically. To understand how server changes impact on the latency of file operations, we ran a test to do file creates, lookups, and removes in three configuration. \emph{Conf A} ran the test on \emph{one} server without any online/offline operation. In \emph{Conf B}, we initially ran on one server, and online a new server in the test. In \emph{Conf C}, we ran on two servers, and offline a server in the test. Figure \ref{onlineoffline} plots the cumulative distribution function of request latency in three configurations. Adding a server makes average latency smaller (\emph{Conf A} to \emph{B}), while deleting a server makes average latency larger (\emph{Conf B} to \emph{C}). The metadata service performs elastically when changing servers.
 
 \subsection{Relayed Large File I/O}
 
@@ -395,15 +395,15 @@
   \caption{Large File I/O Bandwidth in large cluster. \textit{\small Comparing to SkyFS with 30 storage nodes, PFS performs better. It indicates that optimizations for small files do not affect large file I/O.}}\label{largeio}
 \end{figure}
 
-    We want to find out whether our optimizations for small files has affected the large file I/O performance. To understand the tradeoffs of our design choices on large file I/O, we ran \texttt{IOZone} on cluster A to investigate it. In this test, we used SkyFS (with 30 nodes) as PFS's large file store, and compared PFS with native SkyFS. For PFS, all the I/O requests are routed to SkyFS data servers. \texttt{IOZone} is configured with 1MB record size, and the total file size is \emph{three} times larger than memory size. Shown by Figure \ref{largeio}, comparing with SkyFS, PFS performs a little better. Because SkyFS also uses FUSE client, we consider that this strange behavior might be some characters of FUSE.
+    Finally, we want to know whether our optimizations for small files has affected large file I/O performance. To understand the tradeoffs of our design choices on large file I/O, we ran \texttt{IOZone} on cluster A to investigate. In this test, we used SkyFS (with 30 nodes) as PFS's large file store, and compared PFS with native SkyFS. For PFS, all I/O requests are routed to SkyFS data servers. \texttt{IOZone} is configured with 1MB record size, and the total file size is \emph{three} times larger than memory size. Shown by Figure \ref{largeio}, comparing with SkyFS, PFS performs a little better. Because SkyFS also uses FUSE client, we consider that this strange behavior might be some characters of FUSE.
 
     \textbf{Lesson \#8:} Even considering the FUSE overhead, large file I/O in PFS has not gone bad in large cluster.
 
 \section{Conclusion and Future Work}
 
-    In this paper we address the emerging requirement for large scale small file access. We focus on two common problems: \emph{N-Form} and \emph{1-N Mapping} in distributed file systems, and evolve the directory model, interface and storage structures for small files. We propose to use the tabular directory model and interface. In this way, file system can not only save lots of spaces, but also increase the efficiency of metadata service. On the other hand, we propose to use directory based small file scatter and aggregation. Thus, file system can greatly improve small file I/O performance. Our evaluation shows that by using CODIR model, interface, and storage structures, file system achieves best-in-class performance on a commodity cluster. Especially, metadata and small file performance scale linearly with more nodes.
+    In this paper we address the emerging requirement for large scale small file access. We focus on two common problems: \emph{N-Form} and \emph{1-N Mapping} in distributed file systems, and evolve directory model, interface and storage structures for small files. Firstly, we propose to use tabular directory model and interface to not only save lots of spaces, but also increase the efficiency of metadata service. On the other hand, we propose to use directory based small file scatter and aggregation to improve small file I/O performance. Our evaluation shows that by using CODIR model, interface, and storage structures, file system achieves best-in-class performance on commodity clusters. Especially, metadata and small file performance scale linearly with more nodes.
 
-    PFS is open source at \texttt{github.com} for researchers who want to test, tune or integrate it. In the future, we want to enhance and extend the POSIX interface for small files.
+    PFS is released at \texttt{github.com} for researchers who want to test, tune or integrate it. In the future, we will extend POSIX interface for large scale small file access.
 
 %\section{Acknowledgments}
 %
@@ -425,7 +425,7 @@
 
 \bibitem{cstore} Stonebraker, Mike and Abadi, Daniel J. and Batkin, Adam, et al, \emph{C-store: a column-oriented DBMS}, Proceedings of the 31st International conference on Very Large Data Bases, (VLDB 2005)
 
-\bibitem{cassandra} Lakshman, Avinash and Malik, Prashant, \emph{Cassandra: a decentralized structured storage system}, SIGOPS Oper. Syst. Rev. vol 44, 35 - 40, (2010)
+\bibitem{cassandra} Lakshman, Avinash and Malik, Prashant, \emph{Cassandra: a decentralized structured storage system}, SIGOPS Operating System Review vol 44, (2010)
 
 \bibitem{ycsb} Cooper, Brian F. and Silberstein, Adam and Tam, Erwin, et al, \emph{Benchmarking cloud serving systems with YCSB}, Proceedings of the 1st ACM symposium on Cloud computing, (SoCC '10)
 
@@ -449,7 +449,7 @@
 
 \bibitem{hfs} Zhang, Zhihui and Ghose, Kanad, \emph{hFS: a hybrid file system prototype for improving small file and metadata performance}, Proceedings of the 2nd ACM SIGOPS/EuroSys European Conference on Computer Systems, (EuroSys 2007)
 
-\bibitem{giga} Swapnil Patil, Garth Gibson, \emph{Scale and concurrency of GIGA+: file system directories with millions of files}, Proceedings of the 9th USENIX conference on File and stroage technologies, (FAST 2011)
+\bibitem{giga} Swapnil Patil, Garth Gibson, \emph{Scale and concurrency of GIGA+: file system directories with millions of files}, Proceedings of the 9th USENIX conference on File and stroage technologies, (FAST'11)
 
 \bibitem{skyfs} Xing, Jing and Xiong, Jin and Sun, Ninghui and Ma, Jie, \emph{Adaptive and scalable metadata management to support a trillion files}, Proceedings of the Conference on High Performance Computing Networking, Storage and Analysis, (SC 2009)
 
@@ -463,13 +463,13 @@
 
 \bibitem{smartstore} Yu Hua, Hong Jiang, Yifeng Zhu, Dan Feng and Lei Tian. \emph{SmartStore: A New Metadata Organization Paradigm with Semantic-Awareness for Next-Generation File Systems}, Proceedings of the International Conference for High Performance Computing, Network, Storage and Analysis, (SC 2009)
 
-\bibitem{lustre} P. Schwan, \emph{Lustre: building a file system for 1000-node clusters}, in Proceedings of the Linux Symposium, (2003).
+\bibitem{lustre} P. Schwan, \emph{Lustre: building a file system for 1000-node clusters}, in Linux Symposium, (2003).
 
 \bibitem{pvfs} Ligon, III, W.B., and Ross, R. B., \emph{PVFS: Parallel Virtual File System}, Beowulf Cluster Computing with Linux, pages 391-430, MIT Press, (2001).
 
 \bibitem{europar08} Michael  Kuhn, Julian  Kunkel, Thomas  Ludwig, \emph{Directory-Based Metadata Optimizations for Small Files in PVFS}, Proceedings of the 14th international Euro-Par conference on Parallel Processing, (EuroPar 2008)
 
-\bibitem{ipdps09} Philip Ross Carns, Sam  Lang, Robert Ross Kunkel, Thomas  Ludwig, \emph{Small File Accesses in Parallel File Systems}, Proceedings of the 2009 IEEE International Symposium on Parallel\&Distributed Processing, (IPDPS 2009)
+\bibitem{ipdps09} Philip Ross Carns, Sam  Lang, Robert Ross Kunkel, Thomas  Ludwig, \emph{Small File Accesses in Parallel File Systems}, Proceedings of the International Symposium on Para. and Dist. Proc., (IPDPS 2009)
 
 \bibitem{berkeleydb} Oracle, BerkeleyDB, (2011)
 
